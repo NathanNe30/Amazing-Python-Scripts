@@ -48,7 +48,7 @@ setup(name="fixtool",
       author_email="d+fixtool@0x1.org",
       license="MIT",
       keywords="fix testing",
-      install_requires=["simplefix>=1.0.8"],
+      install_requires=["simplefix>=1.0.8", "defusedxml==0.7.1"],
       package_dir={"": "python"},
       packages=["fixtool"],
       entry_points={

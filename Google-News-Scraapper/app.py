@@ -1,11 +1,11 @@
 import requests
-from xml.dom.minidom import parseString
 import pandas as pd
+import defusedxml.minidom
 
 
 def get_google_news_result(term, count):
     results = []
-    obj = parseString(
+    obj = defusedxml.minidom.parseString(
         requests.get('http://news.google.com/news?q=%s&output=rss' %
                      term).text)
     items = obj.getElementsByTagName('item')
