@@ -1,4 +1,4 @@
-import random
+import secrets
 
 print('Winning rules of the game ROCK PAPER SCISSORS are :\n'
       + "Rock vs Paper -> Paper wins \n"
@@ -29,12 +29,12 @@ while True:
 
     # Computer chooses randomly any number
     # among 1, 2, and 3 using randint method
-    comp_choice = random.randint(1, 3)
+    comp_choice = secrets.SystemRandom().randint(1, 3)
 
     # looping until comp_choice value
     # is equal to the choice value
     while comp_choice == choice:
-        comp_choice = random.randint(1, 3)
+        comp_choice = secrets.SystemRandom().randint(1, 3)
 
     # initialize the value of comp_choice_name
     # variable corresponding to the choice value

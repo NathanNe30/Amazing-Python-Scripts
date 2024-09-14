@@ -1,5 +1,5 @@
 import pygame
-import random
+import secrets
 
 pygame.init()
 
@@ -124,16 +124,16 @@ class Dinosaur:
 
 class Cloud:
     def __init__(self):
-        self.x = SCREEN_WIDTH + random.randint(800, 1000)
-        self.y = random.randint(50, 100)
+        self.x = SCREEN_WIDTH + secrets.SystemRandom().randint(800, 1000)
+        self.y = secrets.SystemRandom().randint(50, 100)
         self.image = CLOUD
         self.width = self.image.get_width()
 
     def update(self):
         self.x -= game_speed
         if self.x < -self.width:
-            self.x = SCREEN_WIDTH + random.randint(2500, 3000)
-            self.y = random.randint(50, 100)
+            self.x = SCREEN_WIDTH + secrets.SystemRandom().randint(2500, 3000)
+            self.y = secrets.SystemRandom().randint(50, 100)
 
     def draw(self, SCREEN):
         SCREEN.blit(self.image, (self.x, self.y))
@@ -157,14 +157,14 @@ class Obstacle:
 
 class SmallCactus(Obstacle):
     def __init__(self, image):
-        self.type = random.randint(0, 2)
+        self.type = secrets.SystemRandom().randint(0, 2)
         super().__init__(image, self.type)
         self.rect.y = 325
 
 
 class LargeCactus(Obstacle):
     def __init__(self, image):
-        self.type = random.randint(0, 2)
+        self.type = secrets.SystemRandom().randint(0, 2)
         super().__init__(image, self.type)
         self.rect.y = 300
 
@@ -231,11 +231,11 @@ def main():
         player.update(userInput)
 
         if len(obstacles) == 0:
-            if random.randint(0, 2) == 0:
+            if secrets.SystemRandom().randint(0, 2) == 0:
                 obstacles.append(SmallCactus(SMALL_CACTUS))
-            elif random.randint(0, 2) == 1:
+            elif secrets.SystemRandom().randint(0, 2) == 1:
                 obstacles.append(LargeCactus(LARGE_CACTUS))
-            elif random.randint(0, 2) == 2:
+            elif secrets.SystemRandom().randint(0, 2) == 2:
                 obstacles.append(Bird(BIRD))
 
         for obstacle in obstacles:

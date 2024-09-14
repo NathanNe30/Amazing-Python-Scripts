@@ -1,6 +1,6 @@
 import pygame
-import random
 import time
+import secrets
 
 # Initialize pygame and mixer
 pygame.init()
@@ -114,7 +114,7 @@ music_elements = [
 loaded_elements = [pygame.mixer.Sound(element) for element in music_elements]
 
 # Play the initial music element
-current_element = random.choice(loaded_elements)
+current_element = secrets.choice(loaded_elements)
 current_element.play()
 
 event_music_mapping = {
@@ -175,7 +175,7 @@ event_music_mapping = {
 
 def simulate_game_events():
     while True:
-        yield random.choice(list(event_music_mapping.keys()))
+        yield secrets.choice(list(event_music_mapping.keys()))
 
 # Main loop
 
@@ -187,9 +187,9 @@ def main():
         # Handle the in-game event and update the music
         if event in event_music_mapping:
             event_music = event_music_mapping[event]
-            new_element = random.choice(event_music)
+            new_element = secrets.choice(event_music)
         else:
-            new_element = random.choice(music_elements)
+            new_element = secrets.choice(music_elements)
 
         if new_element != current_element:
             current_element.stop()
@@ -197,7 +197,7 @@ def main():
             current_element.play()
 
         # Simulated delay between events
-        time.sleep(random.uniform(5, 15))
+        time.sleep(secrets.SystemRandom().uniform(5, 15))
 
 
 if __name__ == "__main__":

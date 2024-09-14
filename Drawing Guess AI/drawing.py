@@ -1,10 +1,10 @@
-import random
+import secrets
 
 
 def choose_word():
     words = ["apple", "banana", "car", "dog", "elephant",
              "flower", "guitar", "house", "ice cream", "jacket"]
-    return random.choice(words)
+    return secrets.choice(words)
 
 
 def draw_object(word):

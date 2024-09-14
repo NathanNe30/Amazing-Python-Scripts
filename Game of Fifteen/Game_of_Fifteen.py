@@ -1,9 +1,9 @@
-import random
+import secrets
 
 
 def create_board():
     numbers = list(range(1, 16))
-    random.shuffle(numbers)
+    secrets.SystemRandom().shuffle(numbers)
     numbers.append(None)
 
     board = [numbers[i:i+4] for i in range(0, 16, 4)]

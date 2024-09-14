@@ -1,14 +1,14 @@
-import random
 from words import words
 from hangman_visual import lives_visual_dict
 import string
+import secrets
 
 
 def get_valid_word(words):
     # Randomly choose a word for the given list
-    word = random.choice(words)
+    word = secrets.choice(words)
     while '-' in word or ' ' in word:
-        word = random.choice(words)
+        word = secrets.choice(words)
 
     # Return the word in uppercase
     return word.upper()

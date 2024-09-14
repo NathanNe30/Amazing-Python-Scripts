@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 def generate_state_name():
@@ -12,7 +12,7 @@ def generate_state_name():
                       " Pradesh", " Pradesh", " Pradesh", " Pradesh", " Pradesh", " Pradesh", " Pradesh",
                       " Pradesh", " Nadu", " Pradesh", " Pradesh", " Pradesh", " Pradesh"]
 
-    state_name = random.choice(state_prefixes) + random.choice(state_suffixes)
+    state_name = secrets.choice(state_prefixes) + secrets.choice(state_suffixes)
     return state_name
 
 

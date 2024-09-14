@@ -4,7 +4,7 @@
 # importing random package
 # for methods to generate random
 # numbers.
-import random
+import secrets
 
 # function to initialize game / grid
 # at the start
@@ -35,15 +35,15 @@ def add_new_2(mat):
 
 # choosing a random index for
 # row and column.
-	r = random.randint(0, 3)
-	c = random.randint(0, 3)
+	r = secrets.SystemRandom().randint(0, 3)
+	c = secrets.SystemRandom().randint(0, 3)
 
 	# while loop will break as the
 	# random cell chosen will be empty
 	# (or contains zero)
 	while(mat[r] != 0):
-		r = random.randint(0, 3)
-		c = random.randint(0, 3)
+		r = secrets.SystemRandom().randint(0, 3)
+		c = secrets.SystemRandom().randint(0, 3)
 
 	# we will place a 2 at that empty
 	# random cell.

@@ -1,6 +1,6 @@
 import pygame
 import math
-import random
+import secrets
 
 # setup display
 pygame.init()
@@ -31,7 +31,7 @@ hangman_status = 0
 with open("./Hangman-Game/words.txt", 'r') as f:
     content = f.read()
 list_of_words = content.split(",")
-word = random.choice(list_of_words).upper()
+word = secrets.choice(list_of_words).upper()
 guessed = []
 
 # colors

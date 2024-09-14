@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox, simpledialog
-import random
+import secrets
 
 
 class Sudoku:
@@ -71,8 +71,8 @@ class Sudoku:
     def generate_puzzle(self):
         self.solve_board(self.board)
         for _ in range(81):
-            row = random.randint(0, 8)
-            col = random.randint(0, 8)
+            row = secrets.SystemRandom().randint(0, 8)
+            col = secrets.SystemRandom().randint(0, 8)
             temp = self.board[row][col]
             self.board[row][col] = 0
             count = 0
@@ -186,7 +186,7 @@ class Sudoku:
 
     def remove_cells(self, num_cells):
         cells = [(i, j) for i in range(9) for j in range(9)]
-        random.shuffle(cells)
+        secrets.SystemRandom().shuffle(cells)
         for i in range(num_cells):
             row, col = cells[i]
             self.board[row][col] = 0

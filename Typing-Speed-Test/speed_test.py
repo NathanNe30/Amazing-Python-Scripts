@@ -1,6 +1,6 @@
 import tkinter as tk
-import random
 import timeit
+import secrets
 
 start_time = 0
 
@@ -10,7 +10,7 @@ def get_sentence():
     Reset()
     with open("./Typing-Speed-Test/sentences.txt", "r") as f:
         sentences = f.readlines()
-        sentence = random.choice(sentences).rstrip()
+        sentence = secrets.choice(sentences).rstrip()
         sentence_label.config(text=sentence)
         sentence_length = len(sentence)
         sentence_words = len(sentence.split())

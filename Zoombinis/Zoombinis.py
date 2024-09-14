@@ -1,4 +1,4 @@
-import random
+import secrets
 
 # Constants
 ZOOMBINIS_COUNT = 16
@@ -12,7 +12,7 @@ def setup_teams():
     for i in range(2):
         team = []
         for _ in range(ZOOMBINIS_PER_TEAM):
-            team.append(random.randint(1, 4))
+            team.append(secrets.SystemRandom().randint(1, 4))
         teams.append(team)
     return teams
 

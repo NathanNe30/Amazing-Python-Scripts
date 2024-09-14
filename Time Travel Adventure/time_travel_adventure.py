@@ -1,5 +1,5 @@
 import time
-import random
+import secrets
 
 
 def print_slow(text):
@@ -97,7 +97,7 @@ def time_travel_adventure():
         print_slow("\nYour health is too low to continue the journey. Game Over!")
     else:
         # Random event during time travel
-        if random.random() < 0.3:
+        if secrets.SystemRandom().random() < 0.3:
             print_slow(
                 "\nDuring your time travel, you encounter a time vortex!")
             print_slow("You got disoriented but managed to find your way back.")

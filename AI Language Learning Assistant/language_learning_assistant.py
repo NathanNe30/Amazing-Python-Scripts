@@ -1,5 +1,5 @@
-import random
 import speech_recognition as sr
+import secrets
 
 vocabulary = {
     'apple': 'a fruit',
@@ -593,7 +593,7 @@ def vocabulary_quiz():
     print("AI Language Learning Assistant: Vocabulary Quiz")
     score = 0
     quiz_items = list(vocabulary.keys())
-    random.shuffle(quiz_items)
+    secrets.SystemRandom().shuffle(quiz_items)
 
     for word in quiz_items:
         user_answer = input(f"What does '{word}' mean? ")
@@ -627,7 +627,7 @@ def interactive_conversation_practice():
     print("Type 'exit' to end the conversation.")
 
     while True:
-        conversation = random.choice(conversations)
+        conversation = secrets.choice(conversations)
         user_input = input("ChatBot: " + conversation['question'] + " ")
         if user_input.lower() == 'exit':
             break

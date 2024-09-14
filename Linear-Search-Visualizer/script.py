@@ -2,8 +2,8 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
-import random
 import time
+import secrets
 
 # main window
 root = Tk()
@@ -55,7 +55,7 @@ def Generate():
     # generating random list
     color = []
     for _ in range(size):
-        array.append(random.randrange(minVal, maxVal + 1))
+        array.append(secrets.SystemRandom().randrange(minVal, maxVal + 1))
         color.append('#98AFC7')
 
     drawRect(array, color)

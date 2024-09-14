@@ -1,6 +1,6 @@
-import random
 import discord
 from discord.ext import commands
+import secrets
 
 # Your token here, inside the ""
 TOKEN = ""
@@ -53,7 +53,7 @@ async def kick(ctx, user: discord.User):
 @bot.command(aliases=["rnick"])
 async def random_nick(ctx):
     """Set your nickname to a random one"""
-    new_nick = random.choice(NICKS)
+    new_nick = secrets.choice(NICKS)
     await ctx.author.edit(nick=new_nick)
     await ctx.send(f"Your new nickname is {new_nick}")
 

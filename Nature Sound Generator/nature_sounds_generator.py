@@ -1,7 +1,7 @@
-import random
 import time
 import numpy as np
 import pyaudio
+import secrets
 
 # Dictionary to hold sound characteristics
 sounds = {
@@ -43,7 +43,7 @@ def main():
             selected_sounds = [sound.strip()
                                for sound in user_input.split(",")]
 
-        random.shuffle(selected_sounds)  # Randomize sound order
+        secrets.SystemRandom().shuffle(selected_sounds)  # Randomize sound order
 
         for _ in range(num_channels):
             if not selected_sounds:
@@ -53,20 +53,18 @@ def main():
             sound_params = sounds[sound_choice]
 
             # Add slight variations to frequency and duration
-            frequency = random.uniform(
-                sound_params["min_freq"], sound_params["max_freq"])
-            duration = random.uniform(
-                sound_params["min_duration"], sound_params["max_duration"])
+            frequency = secrets.SystemRandom().uniform(sound_params["min_freq"], sound_params["max_freq"])
+            duration = secrets.SystemRandom().uniform(sound_params["min_duration"], sound_params["max_duration"])
 
             # Volume variation for each channel
-            volume = channel_volume + random.uniform(-0.2, 0.2)
+            volume = channel_volume + secrets.SystemRandom().uniform(-0.2, 0.2)
             volume = max(0.0, min(1.0, volume))
 
             print(f"Playing {sound_choice}...")
             play_sound(frequency, duration, volume)
 
             # Random delay between sounds
-            time.sleep(random.uniform(1, 4))
+            time.sleep(secrets.SystemRandom().uniform(1, 4))
 
 
 if __name__ == "__main__":

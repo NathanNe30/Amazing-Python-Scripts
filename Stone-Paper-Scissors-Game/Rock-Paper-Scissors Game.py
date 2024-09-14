@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 def get_user_input():
@@ -29,7 +29,7 @@ def round(n):
 
     for i in range(n):
         ip = get_user_input()
-        cp = random.randint(1, 3)
+        cp = secrets.SystemRandom().randint(1, 3)
         print(a[cp - 1])
 
         winner = determine_winner(ip, cp)

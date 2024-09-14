@@ -1,8 +1,8 @@
 import numpy as np
-import random
 import pygame
 import sys
 import math
+import secrets
 
 BLUE = (0, 0, 255)
 BLACK = (0, 0, 0)
@@ -142,7 +142,7 @@ def minimax(board, depth, alpha, beta, maximizingPlayer):
             return (None, scorePosition(board, AI_PIECE))
     if maximizingPlayer:
         value = -math.inf
-        column = random.choice(validLocations)
+        column = secrets.choice(validLocations)
         for col in validLocations:
             row = GetNextRow(board, col)
             b_copy = board.copy()
@@ -158,7 +158,7 @@ def minimax(board, depth, alpha, beta, maximizingPlayer):
 
     else:  # Minimizing player
         value = math.inf
-        column = random.choice(validLocations)
+        column = secrets.choice(validLocations)
         for col in validLocations:
             row = GetNextRow(board, col)
             b_copy = board.copy()
@@ -185,7 +185,7 @@ def bestMoveForAI(board, piece):
 
     validLocations = getValidLocations(board)
     bestScore = -10000
-    bestMove = random.choice(validLocations)
+    bestMove = secrets.choice(validLocations)
     for col in validLocations:
         row = GetNextRow(board, col)
         temp_board = board.copy()
@@ -238,7 +238,7 @@ pygame.display.update()
 pygame.display.set_caption('Connect 4')
 myfont = pygame.font.SysFont("monospace", 75)
 
-turn = random.randint(PLAYER, AI)
+turn = secrets.SystemRandom().randint(PLAYER, AI)
 
 while not isGameOver:
 

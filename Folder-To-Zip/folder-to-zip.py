@@ -1,6 +1,6 @@
 import os
 import zipfile
-from random import randrange
+import secrets
 
 
 def zip_dir(path, zip_handler):
@@ -16,7 +16,7 @@ Enter the name of the folder you want to zip
 >
 """)
     to_zip = to_zip.strip() + "/"
-    zip_file_name = f'zip{randrange(0,10000)}.zip'
+    zip_file_name = f'zip{secrets.SystemRandom().randrange(0,10000)}.zip'
     zip_file = zipfile.ZipFile(zip_file_name, 'w', zipfile.ZIP_DEFLATED)
     zip_dir(to_zip, zip_file)
     zip_file.close()

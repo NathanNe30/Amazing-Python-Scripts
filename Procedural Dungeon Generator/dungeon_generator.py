@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 class DungeonGenerator:
@@ -22,12 +22,12 @@ class DungeonGenerator:
             self.dungeons.append(dungeon)
 
     def add_rooms(self, dungeon):
-        num_rooms = random.randint(15, 30)
+        num_rooms = secrets.SystemRandom().randint(15, 30)
         for _ in range(num_rooms):
-            room_width = random.randint(4, 12)
-            room_height = random.randint(4, 10)
-            x = random.randint(1, self.width - room_width - 1)
-            y = random.randint(1, self.height - room_height - 1)
+            room_width = secrets.SystemRandom().randint(4, 12)
+            room_height = secrets.SystemRandom().randint(4, 10)
+            x = secrets.SystemRandom().randint(1, self.width - room_width - 1)
+            y = secrets.SystemRandom().randint(1, self.height - room_height - 1)
             self.create_room(dungeon, x, y, room_width, room_height)
 
     def create_room(self, dungeon, x, y, width, height):
@@ -56,43 +56,43 @@ class DungeonGenerator:
     def add_doors(self, dungeon):
         for i in range(1, len(dungeon) - 1):
             for j in range(1, len(dungeon[0]) - 1):
-                if dungeon[i][j] == '.' and random.random() < 0.02:
+                if dungeon[i][j] == '.' and secrets.SystemRandom().random() < 0.02:
                     dungeon[i][j] = '+'
 
     def add_enemies(self, dungeon):
-        num_enemies = random.randint(5, 15)
+        num_enemies = secrets.SystemRandom().randint(5, 15)
         enemy_types = ['Goblin', 'Skeleton', 'Orc', 'Spider']
         for _ in range(num_enemies):
-            x = random.randint(1, self.width - 2)
-            y = random.randint(1, self.height - 2)
+            x = secrets.SystemRandom().randint(1, self.width - 2)
+            y = secrets.SystemRandom().randint(1, self.height - 2)
             if dungeon[y][x] == '.':
-                enemy_type = random.choice(enemy_types)
+                enemy_type = secrets.choice(enemy_types)
                 dungeon[y][x] = 'E(' + enemy_type[0] + ')'
 
     def add_treasures(self, dungeon):
-        num_treasures = random.randint(5, 10)
+        num_treasures = secrets.SystemRandom().randint(5, 10)
         treasure_types = ['Gold', 'Gem', 'Artifact']
         for _ in range(num_treasures):
-            x = random.randint(1, self.width - 2)
-            y = random.randint(1, self.height - 2)
+            x = secrets.SystemRandom().randint(1, self.width - 2)
+            y = secrets.SystemRandom().randint(1, self.height - 2)
             if dungeon[y][x] == '.':
-                treasure_type = random.choice(treasure_types)
+                treasure_type = secrets.choice(treasure_types)
                 dungeon[y][x] = '$(' + treasure_type[0] + ')'
 
     def add_traps(self, dungeon):
-        num_traps = random.randint(5, 10)
+        num_traps = secrets.SystemRandom().randint(5, 10)
         trap_types = ['Spikes', 'Poison', 'Fire']
         for _ in range(num_traps):
-            x = random.randint(1, self.width - 2)
-            y = random.randint(1, self.height - 2)
+            x = secrets.SystemRandom().randint(1, self.width - 2)
+            y = secrets.SystemRandom().randint(1, self.height - 2)
             if dungeon[y][x] == '.':
-                trap_type = random.choice(trap_types)
+                trap_type = secrets.choice(trap_types)
                 dungeon[y][x] = '^(' + trap_type[0] + ')'
 
     def add_stairs(self, dungeon):
         for _ in range(2):
-            x = random.randint(1, self.width - 2)
-            y = random.randint(1, self.height - 2)
+            x = secrets.SystemRandom().randint(1, self.width - 2)
+            y = secrets.SystemRandom().randint(1, self.height - 2)
             if dungeon[y][x] == '.':
                 dungeon[y][x] = '<' if _ == 0 else '>'
 

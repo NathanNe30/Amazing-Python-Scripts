@@ -1,8 +1,8 @@
-import random
+import secrets
 
 
 def roll_dice():
-    return random.randint(1, 6)
+    return secrets.SystemRandom().randint(1, 6)
 
 
 def ai_roll():

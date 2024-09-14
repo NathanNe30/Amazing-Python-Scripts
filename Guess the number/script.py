@@ -1,11 +1,11 @@
-import random
+import secrets
 
 
 def guess_the_number():
     print("Welcome to Guess the Number Game!")
     print("I'm thinking of a number between 1 and 100.")
 
-    secret_number = random.randint(1, 100)
+    secret_number = secrets.SystemRandom().randint(1, 100)
     attempts = 0
 
     while True:

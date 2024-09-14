@@ -1,6 +1,6 @@
 import pygame
-import random
 import math
+import secrets
 
 # Initialize Pygame
 pygame.init()
@@ -66,12 +66,12 @@ while running:
         player_y += 5
 
     # Add a new obstacle randomly
-    if random.randint(0, 100) < 2:
-        obstacle_type = random.choice(["rect", "tri", "circle"])
-        obstacle_x = random.randint(0, SCREEN_WIDTH - obstacle_width)
+    if secrets.SystemRandom().randint(0, 100) < 2:
+        obstacle_type = secrets.choice(["rect", "tri", "circle"])
+        obstacle_x = secrets.SystemRandom().randint(0, SCREEN_WIDTH - obstacle_width)
 
         if obstacle_type == "circle":
-            obstacle_x = random.randint(0, SCREEN_WIDTH - obstacle_width - 50)
+            obstacle_x = secrets.SystemRandom().randint(0, SCREEN_WIDTH - obstacle_width - 50)
 
         obstacles.append((obstacle_x, -obstacle_height, obstacle_type))
 

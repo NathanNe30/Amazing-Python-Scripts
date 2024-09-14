@@ -1,5 +1,5 @@
-import random
 import time
+import secrets
 
 # Dictionary containing Python code snippets and their expected outputs
 code_snippets = {
@@ -21,7 +21,7 @@ difficulty_levels = {
 
 def get_random_code_snippet(difficulty):
     """Return a random Python code snippet based on the selected difficulty."""
-    return random.choice(difficulty_levels[difficulty])
+    return secrets.choice(difficulty_levels[difficulty])
 
 
 def main():

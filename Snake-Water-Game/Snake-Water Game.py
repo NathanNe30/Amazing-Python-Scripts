@@ -1,8 +1,8 @@
 from ctypes.wintypes import PINT
 from math import gamma
 from pickle import TRUE
-import random
 from tkinter.tix import Tree
+import secrets
 
 
 def game(comp, mine):
@@ -22,7 +22,7 @@ def game(comp, mine):
 
 choice = ('snake', 'water', 'gun')
 # choice is tuple and it will not change in future
-comp = random.randint(0, 2)
+comp = secrets.SystemRandom().randint(0, 2)
 comp = choice[comp]
 # choosing one comp if user pick the value like
 # 0-snake

@@ -1,4 +1,4 @@
-import random
+import secrets
 
 # List of inspirational quotes
 inspirational_quotes = [
@@ -16,7 +16,7 @@ inspirational_quotes = [
 
 
 def generate_random_quote():
-    return random.choice(inspirational_quotes)
+    return secrets.choice(inspirational_quotes)
 
 
 if __name__ == "__main__":

@@ -1,5 +1,5 @@
-import random
 import time
+import secrets
 
 
 def generate_pattern():
@@ -22,7 +22,7 @@ def generate_pattern():
         ["blue", "red", "green", "yellow", "orange", "purple", "brown", "cyan"],
         ["magenta", "purple", "pink", "yellow", "orange", "green", "red", "gray"]
     ]
-    pattern = random.choice(patterns)
+    pattern = secrets.choice(patterns)
     return pattern
 
 

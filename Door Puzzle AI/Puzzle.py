@@ -1,25 +1,24 @@
-import random
+import secrets
 
 
 def generate_doors(num_doors):
     doors = [False] * num_doors
-    prize_door = random.randint(0, num_doors - 1)
+    prize_door = secrets.SystemRandom().randint(0, num_doors - 1)
     doors[prize_door] = True
     return doors
 
 
 def choose_door(num_doors):
-    return random.randint(0, num_doors - 1)
+    return secrets.SystemRandom().randint(0, num_doors - 1)
 
 
 def open_door(doors, chosen_door):
-    reveal_door = random.choice(
-        [i for i in range(len(doors)) if i != chosen_door and not doors[i]])
+    reveal_door = secrets.choice([i for i in range(len(doors)) if i != chosen_door and not doors[i]])
     print(f"Door {reveal_door + 1} has no prize.")
 
 
 def switch_door(chosen_door, num_doors):
-    return random.choice([i for i in range(num_doors) if i != chosen_door])
+    return secrets.choice([i for i in range(num_doors) if i != chosen_door])
 
 
 def main():

@@ -1,6 +1,6 @@
 from tkinter import *
-import random
 import time
+import secrets
 
 root = Tk()
 root.geometry("1600x800+0+0")
@@ -49,7 +49,7 @@ def btnEqualsInput():
 
 
 def Ref():
-    x = random.randint(12908, 500876)
+    x = secrets.SystemRandom().randint(12908, 500876)
     randomRef = str(x)
     rand.set(randomRef)
 

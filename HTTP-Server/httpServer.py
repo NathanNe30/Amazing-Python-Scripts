@@ -2,7 +2,6 @@ from socket import *
 import datetime
 import os
 import time
-import random
 import threading
 from _thread import *
 import shutil  # to implement delete method
@@ -14,6 +13,7 @@ from config import *  # import variables
 import signal  # signal to handle Ctrl+C and other SIGNALS
 from supplement.breakdown import *  # to breakdown entity
 from supplement.last_modified import *  # last_modified for condi get
+import secrets
 
 
 class http_methods:
@@ -115,7 +115,7 @@ class http_methods:
                               [ip, client_thread, scode])
                 ip, client_thread, scode = glob
         show_response += '\r\n' + COOKIE + str(IDENTITY) + MAXAGE
-        IDENTITY += random.randint(1, 10)
+        IDENTITY += secrets.SystemRandom().randint(1, 10)
         for state in switcher:
             if state == 'User-Agent':
                 if isItDir:

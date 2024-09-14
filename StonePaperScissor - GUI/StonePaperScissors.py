@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 
 
-import random
 
 from tkinter import *
+import secrets
 
 # variables and Dictionary
 # These are total events that could occur if/else can also be used but they are pain to implement
@@ -24,7 +24,7 @@ def outcome_handler(user_choice):
     global comp_score
     global player_score
     outcomes = ["rock", "paper", "scissors"]
-    num = random.randint(0, 2)
+    num = secrets.SystemRandom().randint(0, 2)
     computer_choice = outcomes[num]
     result = schema[user_choice][computer_choice]
 

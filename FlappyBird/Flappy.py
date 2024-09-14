@@ -4,15 +4,13 @@ Created on Sun Jun  6 10:57:01 2021
 
 @author: Ayush
 """
-
-# Import Dependencies
-import random
 import numpy as np
 import flappy_bird_gym
 from collections import deque
 from tensorflow.keras.layers import Input, Dense
 from tensorflow.keras.models import load_model, save_model, Sequential
 from tensorflow.keras.optimizers import RMSprop
+import secrets
 
 # Neural Network for Agent
 
@@ -65,7 +63,7 @@ class DQNAgent:
             return
 
         # Create minibatch
-        minibatch = random.sample(self.memory, min(
+        minibatch = secrets.SystemRandom().sample(self.memory, min(
             len(self.memory), self.batch_number))
         # Variables to store minibatch info
         state = np.zeros((self.batch_number, self.state_space))

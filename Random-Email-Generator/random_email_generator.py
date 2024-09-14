@@ -1,7 +1,8 @@
-import random
 import string
 import csv
 import progressbar
+import secrets
+
 ''' Ask user for total number of emails required'''
 
 
@@ -25,13 +26,13 @@ def makeEmail():
         'outlook', 'frontier'
     ]
 
-    finalext = extensions[random.randint(0, len(extensions) - 1)]
-    finaldom = domains[random.randint(0, len(domains) - 1)]
+    finalext = extensions[secrets.SystemRandom().randint(0, len(extensions) - 1)]
+    finaldom = domains[secrets.SystemRandom().randint(0, len(domains) - 1)]
 
-    accountlen = random.randint(1, 20)
+    accountlen = secrets.SystemRandom().randint(1, 20)
 
     finalacc = ''.join(
-        random.choice(string.ascii_lowercase + string.digits)
+        secrets.choice(string.ascii_lowercase + string.digits)
         for _ in range(accountlen))
 
     finale = finalacc + "@" + finaldom + "." + finalext

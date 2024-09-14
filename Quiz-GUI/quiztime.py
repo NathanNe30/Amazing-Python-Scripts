@@ -1,10 +1,10 @@
 import tkinter as tk
 from tkinter import ttk
 from tkinter import messagebox
-import random
 import urllib.request as request
 import urllib.parse
 import json
+import secrets
 
 
 class quiz(tk.Tk):
@@ -268,7 +268,7 @@ class quiz(tk.Tk):
 
         # random category is generated in the below if condition
         if category == "Random Category":
-            self.category = random.choice(list(categoryMappings.keys()))
+            self.category = secrets.choice(list(categoryMappings.keys()))
         # category is obtained through the category mappings
         category_id = categoryMappings[self.category]
 
@@ -298,7 +298,7 @@ class quiz(tk.Tk):
                 incorrect_options[i][j] = urllib.parse.unquote(
                     incorrect_options[i][j], encoding='utf-8', errors='replace')
             incorrect_options[i].append(self.correct_answers[i])
-            random.shuffle(incorrect_options[i])
+            secrets.SystemRandom().shuffle(incorrect_options[i])
 
         self.options = []
         # the

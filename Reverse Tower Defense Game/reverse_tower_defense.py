@@ -1,4 +1,4 @@
-import random
+import secrets
 
 # Enemy types with varying attack capabilities
 ENEMY_TYPES = [
@@ -25,20 +25,20 @@ special_attack_cooldown = 0
 def setup_defenses():
     defenses = []
     for i in range(5):
-        defense_strength = random.randint(50 + 10*level, 100 + 10*level)
+        defense_strength = secrets.SystemRandom().randint(50 + 10*level, 100 + 10*level)
         defenses.append(defense_strength)
     return defenses
 
 
 def choose_enemy_type():
     global enemy_type
-    enemy_type = random.choice(ENEMY_TYPES)
+    enemy_type = secrets.choice(ENEMY_TYPES)
 
 
 def use_special_attack():
     global special_attack_cooldown
     if special_attack_cooldown == 0:
-        special_attack = random.choice(SPECIAL_ATTACKS)
+        special_attack = secrets.choice(SPECIAL_ATTACKS)
         special_attack_cooldown = special_attack["cooldown"]
         print(
             f"Used {special_attack['name']}! It deals {special_attack['damage']} damage!")
@@ -77,18 +77,18 @@ def attack(defenses):
 
             if action == "1":
                 damage = enemy_type["damage"]
-                if random.random() < enemy_type["chance_to_evade"]:
+                if secrets.SystemRandom().random() < enemy_type["chance_to_evade"]:
                     print(f"{enemy_type['name']} evaded your attack!")
                     damage = 0
                 else:
                     print(
                         f"You attacked the defenses and caused {damage} damage!")
-                defenses[random.randint(0, len(defenses) - 1)] -= damage
+                defenses[secrets.SystemRandom().randint(0, len(defenses) - 1)] -= damage
                 return False
 
             elif action == "2":
                 damage = use_special_attack()
-                defenses[random.randint(0, len(defenses) - 1)] -= damage
+                defenses[secrets.SystemRandom().randint(0, len(defenses) - 1)] -= damage
                 return False
 
             elif action == "3":

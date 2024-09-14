@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 def create_grid(size):
@@ -6,8 +6,8 @@ def create_grid(size):
 
 
 def place_treasure(grid, size):
-    row = random.randint(0, size - 1)
-    col = random.randint(0, size - 1)
+    row = secrets.SystemRandom().randint(0, size - 1)
+    col = secrets.SystemRandom().randint(0, size - 1)
     grid[row][col] = 'T'
     return row, col
 
@@ -34,8 +34,7 @@ def move_explorer(grid, row, col, direction):
 
 def grid_explorer(size):
     grid = create_grid(size)
-    explorer_row, explorer_col = random.randint(
-        0, size - 1), random.randint(0, size - 1)
+    explorer_row, explorer_col = secrets.SystemRandom().randint(0, size - 1), secrets.SystemRandom().randint(0, size - 1)
     treasure_row, treasure_col = place_treasure(grid, size)
 
     print("Welcome to Grid Explorer!")

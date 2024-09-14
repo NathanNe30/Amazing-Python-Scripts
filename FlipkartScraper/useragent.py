@@ -1,4 +1,4 @@
-from random import choice
+import secrets
 
 UserAgents = [
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/105.0.0.0 Safari/537.36",
@@ -21,7 +21,7 @@ UserAgents = [
 
 
 def get_ua():
-    return choice(UserAgents)
+    return secrets.choice(UserAgents)
 
 # import the choice function from the random module
 # create a list of user agents

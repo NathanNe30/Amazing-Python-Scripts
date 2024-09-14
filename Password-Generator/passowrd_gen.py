@@ -1,5 +1,5 @@
 import string
-import random
+import secrets
 
 
 def gen():
@@ -16,7 +16,7 @@ def gen():
     s.extend(list(s3))
     s.extend(list(s4))
 
-    random.shuffle(s)
+    secrets.SystemRandom().shuffle(s)
     pas = ("".join(s[0:passlen]))
     print(pas)
 

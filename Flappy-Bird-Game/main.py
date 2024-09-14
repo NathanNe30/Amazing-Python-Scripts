@@ -1,7 +1,7 @@
-import random
 import sys  # we use sys.exit to exit the program
 import pygame
 from pygame.locals import *
+import secrets
 
 # Global variables for the games
 FPS = 32
@@ -167,8 +167,7 @@ def getRandomPipe():
     pipeHeight = GAME_SPRITES['pipe'][0].get_height()
     offset = SCREENHEIGHT/3
     y2 = offset + \
-        random.randrange(
-            0, int(SCREENHEIGHT-GAME_SPRITES['base'].get_height()-1.2*offset))
+        secrets.SystemRandom().randrange(0, int(SCREENHEIGHT-GAME_SPRITES['base'].get_height()-1.2*offset))
     pipeX = SCREENWIDTH+10
     y1 = pipeHeight-y2+offset
     pipe = [

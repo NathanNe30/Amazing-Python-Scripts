@@ -1,7 +1,8 @@
 import smtplib
 from datetime import datetime as dt
-import random
 import pandas as pd
+import secrets
+
 my_mail = "your email"
 password = "your application password"
 
@@ -12,7 +13,7 @@ today = f"{date.month}-{date.day}"
 for index, row in data.iterrows():
     birth_day = (f"{row.month}-{row.day}")
     if (today == today):
-        with open(f"./letter_{random.randint(1,3)}.txt", mode="r") as wish_file:
+        with open(f"./letter_{secrets.SystemRandom().randint(1,3)}.txt", mode="r") as wish_file:
             contents = wish_file.read()
             output = contents.replace('[NAME]', row.name)
             with smtplib.SMTP("smtp.gmail.com", port=587) as connection:

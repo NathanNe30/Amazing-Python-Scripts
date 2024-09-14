@@ -1,5 +1,5 @@
 from turtle import *
-import random
+import secrets
 
 speed(speed='fastest')
 
@@ -13,9 +13,9 @@ def draw(n, x, angle):
         # choosing random integers
         # between 0 and 255
         # to generate random rgb values
-        a = random.randint(0, 255)
-        b = random.randint(0, 255)
-        c = random.randint(0, 255)
+        a = secrets.SystemRandom().randint(0, 255)
+        b = secrets.SystemRandom().randint(0, 255)
+        c = secrets.SystemRandom().randint(0, 255)
 
         # setting the outline
         # and fill colour

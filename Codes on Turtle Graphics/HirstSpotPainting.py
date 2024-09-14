@@ -1,7 +1,6 @@
 import turtle as t
 import colorgram
-# importing colorgram for extracting colors
-import random
+import secrets
 
 RgbColor = []
 t.colormode(255)
@@ -17,9 +16,9 @@ tim.forward(500)
 tim.setheading(0)
 for times in range(10):
     for dots in range(10):
-        tim.dot(20, random.choice(RgbColor))
+        tim.dot(20, secrets.choice(RgbColor))
         tim.forward(50)
-    tim.dot(20, random.choice(RgbColor))
+    tim.dot(20, secrets.choice(RgbColor))
     tim.setheading(90)
     tim.forward(50)
     if times % 2 == 0:

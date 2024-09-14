@@ -1,5 +1,5 @@
 
-import random
+import secrets
 
 
 def play_game():
@@ -13,7 +13,7 @@ def play_game():
     correct_guess = False
 
     while not correct_guess:
-        guess = random.randint(low, high)
+        guess = secrets.SystemRandom().randint(low, high)
         print("Is your number", guess, "?")
         user_input = input("Enter 'y', 'l', or 'h': ")
 

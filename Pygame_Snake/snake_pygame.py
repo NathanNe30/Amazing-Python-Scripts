@@ -1,5 +1,5 @@
 import pygame
-import random
+import secrets
 
 # Initialize pygame
 pygame.init()
@@ -26,8 +26,8 @@ snake_body = [[100, 50], [90, 50], [80, 50]]
 snake_speed = 10
 
 # Set the initial food position
-food_position = [random.randrange(1, screen_width // 10) * 10,
-                 random.randrange(1, screen_height // 10) * 10]
+food_position = [secrets.SystemRandom().randrange(1, screen_width // 10) * 10,
+                 secrets.SystemRandom().randrange(1, screen_height // 10) * 10]
 food_spawn = True
 
 # Set the initial game score
@@ -63,8 +63,8 @@ while not game_over:
 
     # Spawn new food if the previous one was eaten
     if not food_spawn:
-        food_position = [random.randrange(1, screen_width // 10) * 10,
-                         random.randrange(1, screen_height // 10) * 10]
+        food_position = [secrets.SystemRandom().randrange(1, screen_width // 10) * 10,
+                         secrets.SystemRandom().randrange(1, screen_height // 10) * 10]
         food_spawn = True
 
     # Update the snake's body

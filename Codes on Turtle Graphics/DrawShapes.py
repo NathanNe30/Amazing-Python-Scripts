@@ -1,5 +1,5 @@
 import turtle as t
-import random
+import secrets
 
 tim = t.Turtle()
 ColorList = ["pink", "salmon", "pale turquoise", "lime green", "sandy brown"]
@@ -14,7 +14,7 @@ def draw_shape(sides):
 
 
 for i in range(3, 11):
-    tim.color(random.choice(ColorList))
+    tim.color(secrets.choice(ColorList))
     draw_shape(i)
 scr = t.Screen()
 scr.exitonclick()

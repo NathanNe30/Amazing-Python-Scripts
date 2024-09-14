@@ -8,7 +8,7 @@ Original file is located at
 """
 
 from tkinter import *
-import random
+import secrets
 
 root = Tk()
 root.title('Number Guessing Game')
@@ -33,7 +33,7 @@ attempts = 3
 def get_rand():
     b4.configure(state=DISABLED)
     global value
-    value = random.randint(num1.get(), num2.get())
+    value = secrets.SystemRandom().randint(num1.get(), num2.get())
 
 
 # resets the window

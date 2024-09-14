@@ -1,8 +1,8 @@
-import random
+import secrets
 
 
 def generate_code(length):
-    return [random.randint(1, 6) for _ in range(length)]
+    return [secrets.SystemRandom().randint(1, 6) for _ in range(length)]
 
 
 def evaluate_guess(secret, guess):

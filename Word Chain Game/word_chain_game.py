@@ -1,6 +1,6 @@
-import random
 import string
 import time
+import secrets
 
 # Existing code (is_valid_word, is_valid_move, word_list)
 
@@ -19,7 +19,7 @@ def get_word_length_difficulty(difficulty):
 
 
 def get_random_letter():
-    return random.choice(string.ascii_lowercase)
+    return secrets.choice(string.ascii_lowercase)
 
 
 def get_hint(prev_word):

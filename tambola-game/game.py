@@ -1,6 +1,6 @@
 from tkinter import *
-import random
 import tkinter.messagebox
+import secrets
 
 parent = Tk()
 numbers_generated = NONE
@@ -21,10 +21,10 @@ TAMBOLA = Label(parent, text="TAMBOLA",
 
 
 def print_number():
-    random_number = random.randint(0, 100)
+    random_number = secrets.SystemRandom().randint(0, 100)
     if random_number in unique_nums_generated:
         while (random_number in unique_nums_generated):
-            random_number = random.randint(0, 100)
+            random_number = secrets.SystemRandom().randint(0, 100)
     unique_nums_generated.append(random_number)
     label.config(text=str(random_number), bg="#B0E2FF")
     global numbers_generated
@@ -108,18 +108,18 @@ def generate_number():
     x = 0
 
     while (x < 9):
-        number = random.randint(0, 100)
+        number = secrets.SystemRandom().randint(0, 100)
         if number in array1:
             while (number in array1):
-                number = random.randint(0, 100)
+                number = secrets.SystemRandom().randint(0, 100)
         array1.append(number)
         x = x+1
     y = 0
     while (y < 9):
-        number = random.randint(0, 100)
+        number = secrets.SystemRandom().randint(0, 100)
         if number in array2:
             while (number in array2):
-                number = random.randint(0, 100)
+                number = secrets.SystemRandom().randint(0, 100)
         array2.append(number)
         y = y+1
 

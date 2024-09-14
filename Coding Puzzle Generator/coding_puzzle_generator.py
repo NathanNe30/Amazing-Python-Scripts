@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 def generate_puzzle(difficulty):
@@ -14,17 +14,17 @@ def generate_puzzle(difficulty):
 
 
 def generate_easy_puzzle():
-    puzzle_type = random.choice(["arithmetic", "string"])
+    puzzle_type = secrets.choice(["arithmetic", "string"])
     if puzzle_type == "arithmetic":
-        num1 = random.randint(1, 10)
-        num2 = random.randint(1, 10)
-        operator = random.choice(["+", "-"])
+        num1 = secrets.SystemRandom().randint(1, 10)
+        num2 = secrets.SystemRandom().randint(1, 10)
+        operator = secrets.choice(["+", "-"])
         puzzle = f"{num1} {operator} {num2}"
         solution = eval(puzzle)
         hint = "This is an arithmetic puzzle."
     else:  # puzzle_type == "string"
-        word = random.choice(["hello", "python", "coding", "challenge"])
-        shuffle_word = "".join(random.sample(word, len(word)))
+        word = secrets.choice(["hello", "python", "coding", "challenge"])
+        shuffle_word = "".join(secrets.SystemRandom().sample(word, len(word)))
         puzzle = shuffle_word
         solution = word
         hint = "Rearrange the letters to form a meaningful word."
@@ -33,27 +33,26 @@ def generate_easy_puzzle():
 
 
 def generate_medium_puzzle():
-    puzzle_type = random.choice(["arithmetic", "string", "logical"])
+    puzzle_type = secrets.choice(["arithmetic", "string", "logical"])
     if puzzle_type == "arithmetic":
-        num1 = random.randint(10, 50)
-        num2 = random.randint(1, 10)
-        operator = random.choice(["+", "-", "*"])
+        num1 = secrets.SystemRandom().randint(10, 50)
+        num2 = secrets.SystemRandom().randint(1, 10)
+        operator = secrets.choice(["+", "-", "*"])
         puzzle = f"{num1} {operator} {num2}"
         solution = eval(puzzle)
         hint = "This is an arithmetic puzzle."
     elif puzzle_type == "string":
-        word = random.choice(["apple", "banana", "orange", "grape"])
-        num_chars_to_remove = random.randint(1, len(word) - 1)
-        indices_to_remove = random.sample(
-            range(len(word)), num_chars_to_remove)
+        word = secrets.choice(["apple", "banana", "orange", "grape"])
+        num_chars_to_remove = secrets.SystemRandom().randint(1, len(word) - 1)
+        indices_to_remove = secrets.SystemRandom().sample(range(len(word)), num_chars_to_remove)
         puzzle = "".join(
             c if i not in indices_to_remove else "_" for i, c in enumerate(word))
         solution = word
         hint = f"Remove {num_chars_to_remove} letter(s) to reveal the original word."
     else:  # puzzle_type == "logical"
-        num1 = random.randint(1, 10)
-        num2 = random.randint(1, 10)
-        operator = random.choice(["and", "or"])
+        num1 = secrets.SystemRandom().randint(1, 10)
+        num2 = secrets.SystemRandom().randint(1, 10)
+        operator = secrets.choice(["and", "or"])
         puzzle = f"{num1} {operator} {num2}"
         solution = eval(puzzle.capitalize())
         hint = "This is a logical puzzle."
@@ -62,29 +61,27 @@ def generate_medium_puzzle():
 
 
 def generate_hard_puzzle():
-    puzzle_type = random.choice(["arithmetic", "string", "logical"])
+    puzzle_type = secrets.choice(["arithmetic", "string", "logical"])
     if puzzle_type == "arithmetic":
-        num1 = random.randint(50, 100)
-        num2 = random.randint(10, 20)
-        operator = random.choice(["+", "-", "*", "/"])
+        num1 = secrets.SystemRandom().randint(50, 100)
+        num2 = secrets.SystemRandom().randint(10, 20)
+        operator = secrets.choice(["+", "-", "*", "/"])
         puzzle = f"{num1} {operator} {num2}"
         solution = eval(puzzle)
         hint = "This is an arithmetic puzzle."
     elif puzzle_type == "string":
-        word = random.choice(["python", "programming", "challenge"])
-        num_chars_to_replace = random.randint(1, len(word) - 1)
-        indices_to_replace = random.sample(
-            range(len(word)), num_chars_to_replace)
-        replacement_chars = "".join(random.choices(
-            "abcdefghijklmnopqrstuvwxyz", k=num_chars_to_replace))
+        word = secrets.choice(["python", "programming", "challenge"])
+        num_chars_to_replace = secrets.SystemRandom().randint(1, len(word) - 1)
+        indices_to_replace = secrets.SystemRandom().sample(range(len(word)), num_chars_to_replace)
+        replacement_chars = "".join(secrets.SystemRandom().choices("abcdefghijklmnopqrstuvwxyz", k=num_chars_to_replace))
         puzzle = "".join(c if i not in indices_to_replace else replacement_chars[idx]
                          for idx, c in enumerate(word))
         solution = word
         hint = f"Replace {num_chars_to_replace} letter(s) with {replacement_chars} to reveal the original word."
     else:  # puzzle_type == "logical"
-        num1 = random.randint(1, 10)
-        num2 = random.randint(1, 10)
-        operator = random.choice(["and", "or", "not"])
+        num1 = secrets.SystemRandom().randint(1, 10)
+        num2 = secrets.SystemRandom().randint(1, 10)
+        operator = secrets.choice(["and", "or", "not"])
         puzzle = f"{operator.capitalize()} {num1} == {num2}"
         solution = eval(f"{num1} {operator} {num2}")
         hint = "This is a logical puzzle."

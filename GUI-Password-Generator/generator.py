@@ -1,7 +1,7 @@
-import random
 import pyperclip
 from tkinter import *
 from tkinter.ttk import *
+import secrets
 
 
 def getStrength():
@@ -15,19 +15,19 @@ def getStrength():
     # if strength selected is low
     if var.get() == 1:
         for i in range(0, length):
-            password = password + random.choice(lower)
+            password = password + secrets.choice(lower)
         return password
 
     # if strength selected is medium
     elif var.get() == 0:
         for i in range(0, length):
-            password = password + random.choice(upper)
+            password = password + secrets.choice(upper)
         return password
 
     # if strength selected is strong
     elif var.get() == 3:
         for i in range(0, length):
-            password = password + random.choice(digits)
+            password = password + secrets.choice(digits)
         return password
     else:
         print("Please choose an option")

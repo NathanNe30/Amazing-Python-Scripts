@@ -1,5 +1,5 @@
-import random
 import string
+import secrets
 
 
 def speak_like_yoda(sentence):
@@ -13,7 +13,7 @@ def speak_like_yoda(sentence):
     for p in string.punctuation.replace("'", ''):
         sentence = sentence.replace(p, '')
     words = sentence.split()
-    random.shuffle(words)
+    secrets.SystemRandom().shuffle(words)
     new_sent = ' '.join(words)
     print('\nYour Yodenglish sentence: ')
     print(new_sent.capitalize())

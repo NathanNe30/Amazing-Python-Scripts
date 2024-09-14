@@ -1,5 +1,5 @@
 from tkinter import *
-import random
+import secrets
 
 GAME_WIDTH = 600
 GAME_HEIGHT = 600
@@ -31,8 +31,8 @@ class Food:
 
     def __init__(self):
 
-        x = random.randint(0, (GAME_WIDTH/SPACE_SIZE)-1) * SPACE_SIZE
-        y = random.randint(0, (GAME_HEIGHT/SPACE_SIZE)-1) * SPACE_SIZE
+        x = secrets.SystemRandom().randint(0, (GAME_WIDTH/SPACE_SIZE)-1) * SPACE_SIZE
+        y = secrets.SystemRandom().randint(0, (GAME_HEIGHT/SPACE_SIZE)-1) * SPACE_SIZE
 
         self.coordinates = [x, y]
 

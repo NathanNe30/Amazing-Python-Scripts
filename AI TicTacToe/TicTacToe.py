@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 def display_board(board):
@@ -34,7 +34,7 @@ def win_check(board, mark):
 
 
 def choose_first():
-    return random.choice(['Player 1', 'Player 2'])
+    return secrets.choice(['Player 1', 'Player 2'])
 
 
 def space_check(board, position):
