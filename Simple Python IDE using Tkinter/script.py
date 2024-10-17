@@ -45,7 +45,7 @@ def run():
         return
     command = f'python {file_path}'
     process = subprocess.Popen(
-        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
     output, error = process.communicate()
     code_output.insert('1.0', output)
     code_output.insert('1.0',  error)

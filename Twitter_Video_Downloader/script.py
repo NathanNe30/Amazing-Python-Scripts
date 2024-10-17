@@ -29,7 +29,7 @@ def Download_vid():
         return
     response.close()
 
-    with subprocess.Popen("youtube-dl {} --no-cache-dir".format(url), stdout=subprocess.PIPE, shell=True, universal_newlines=True) as Process:
+    with subprocess.Popen("youtube-dl {} --no-cache-dir".format(url), stdout=subprocess.PIPE, shell=False, universal_newlines=True) as Process:
         for line in Process.stdout:
             Download_Window.insert(END, line)
             main.update_idletasks()

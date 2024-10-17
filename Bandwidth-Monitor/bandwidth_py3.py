@@ -11,7 +11,7 @@ import tkinter.messagebox
 
 def monitor(limit, unit):
     check = "vnstat"
-    proc = subprocess.Popen(check, shell=True, stdout=subprocess.PIPE)
+    proc = subprocess.Popen(check, shell=False, stdout=subprocess.PIPE)
     output = proc.communicate()
     output = str(output)
     # print output
