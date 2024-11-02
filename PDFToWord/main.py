@@ -5,7 +5,6 @@ import sys
 # Take PDF's path as input
 pdf = input("Enter the path to your file: ")
 assert os.path.exists(pdf), "File not found at, "+str(pdf)
-f = open(pdf, 'r+')
 
 # Ask for custom name for the word doc
 doc_name_choice = input(

@@ -188,18 +188,14 @@ def data_generator(train_description, encoding_train, word_to_idx, max_len, batc
                 yield [[np.array(x1), np.array(x2)], np.array(y)]
                 x1, x2, y = [], [], []
                 n = 0
-
-
-# WORD EMBEDDINGS
-# The text data should be embedded before passing to RNN/LSTM layer
-f = open("files/glove.6B.50d.txt", encoding='utf8')
-embedding_index = {}
-
-for line in f:
-    values = line.split()
-    word = values[0]
-    word_embedding = np.array(values[1:], dtype='float')
-    embedding_index[word] = word_embedding
+with open("files/glove.6B.50d.txt", encoding='utf8') as f:
+    embedding_index = {}
+    
+    for line in f:
+        values = line.split()
+        word = values[0]
+        word_embedding = np.array(values[1:], dtype='float')
+        embedding_index[word] = word_embedding
 
 
 def get_embedding_matrix(vocab_size=2574):

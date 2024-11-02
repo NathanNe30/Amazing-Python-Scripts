@@ -19,8 +19,8 @@ def read_article(file_name):
     :param file_name: Path of text file (line 12)
     :return: sentences
     """
-    file = open(file_name, 'r', encoding="utf-8")
-    filedata = file.readlines()
+    with open(file_name, 'r', encoding="utf-8") as file:
+        filedata = file.readlines()
     article = filedata[0].split(". ")
     sentences = []
 
