@@ -1,7 +1,6 @@
 # importing libraries
 from flask import Flask, request, render_template
 import sklearn
-import pickle
 import pandas as pd
 import re
 import numpy as np
@@ -9,6 +8,8 @@ from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 from sklearn.preprocessing import LabelEncoder
 from googletrans import Translator
+import fickling
+
 le = LabelEncoder()
 
 app = Flask(__name__)
@@ -29,8 +30,8 @@ def predict():
     y = le.fit_transform(y)
 
     # loading the model and cv
-    model = pickle.load(open("model.pkl", "rb"))
-    cv = pickle.load(open("transform.pkl", "rb"))
+    model = fickling.load(open("model.pkl", "rb"))
+    cv = fickling.load(open("transform.pkl", "rb"))
 
     if request.method == "POST":
         # taking the input

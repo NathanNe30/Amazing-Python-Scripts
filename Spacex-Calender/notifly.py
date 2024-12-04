@@ -8,6 +8,7 @@ from google.auth.transport.requests import Request
 from bs4 import BeautifulSoup
 import requests
 from datetime import datetime
+import fickling
 
 # Enter your own Google Calendar API json credentials file below (if you renamed it)
 api_credentials_json = 'credentials.json'
@@ -53,7 +54,7 @@ def google_calendar_setup():
     # time.
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
-            creds = pickle.load(token)
+            creds = fickling.load(token)
     # If there are no (valid) credentials available, let the user log in.
     if not creds or not creds.valid:
         if creds and creds.expired and creds.refresh_token:

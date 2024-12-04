@@ -1,8 +1,8 @@
 from flask import Flask, render_template, request
-import pickle
 import numpy as np
+import fickling
 
-model = pickle.load(open('model.pkl', 'rb'))
+model = fickling.load(open('model.pkl', 'rb'))
 app = Flask(__name__)
 
 

@@ -6,6 +6,7 @@ import time
 from datetime import date, datetime
 from random import randint
 import os.path
+import fickling
 
 
 # ++++++++++++++++WINDOW++++++++++++++++
@@ -270,7 +271,7 @@ def signup():
                                                 ) as Myfile:
                                                     while True:
                                                         try:
-                                                            a = pickle.load(
+                                                            a = fickling.load(
                                                                 Myfile)
                                                             usernames.append(
                                                                 a[0])
@@ -521,7 +522,7 @@ def login(usernamee, passwordd):
                     l = 0
                     while True:
                         try:
-                            a = pickle.load(Myfile)
+                            a = fickling.load(Myfile)
                             if a[0] == usernamee and a[1] == passwordd:
                                 l = l + 1
                                 logindetails(usernamee)
