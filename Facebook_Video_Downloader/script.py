@@ -81,7 +81,7 @@ class VideoDownload(Thread):
 
         # save the picture to a file
         block_size = 1024  # 1kB
-        r = get(self.url, stream=True)
+        r = get(self.url, stream=True, timeout=60)
         total_size = int(r.headers.get("content-length"))
 
         with open('video.mp4', 'wb') as file:

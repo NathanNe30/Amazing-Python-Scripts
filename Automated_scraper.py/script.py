@@ -7,7 +7,7 @@ import time
 def display_content(url, selector):
     try:
         # Send a GET request to the URL
-        response = requests.get(url)
+        response = requests.get(url, timeout=60)
 
         # Check if the request was successful
         if response.status_code == 200:

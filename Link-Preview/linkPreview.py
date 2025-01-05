@@ -122,7 +122,7 @@ else:
     # if not in db get via request
 
     # getting the html
-    r = requests.get(url)
+    r = requests.get(url, timeout=60)
     soup = BeautifulSoup(r.text, "html.parser")
 
     sevenDaysInSec = 7*24*60*60

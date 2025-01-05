@@ -30,7 +30,7 @@ def animate():
 
 def ask(question):
     payload = {"question": question}
-    response = requests.post(url, json=payload, headers=headers)
+    response = requests.post(url, json=payload, headers=headers, timeout=60)
     return response.json().get("answer")
 
 

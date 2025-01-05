@@ -49,7 +49,7 @@ with open('internshala.csv', mode='a') as f:
     ])
     for i in range(1, pages + 1):
         print('Page', i)
-        resp = requests.get(url + "/page-" + str(i))
+        resp = requests.get(url + "/page-" + str(i), timeout=60)
         data = BeautifulSoup(resp.content, 'lxml')
         companies = data.findAll("div", {"class": "heading_6 company_name"})
         profiles = data.findAll("div", {"class": "heading_4_5 profile"})

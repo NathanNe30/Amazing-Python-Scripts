@@ -144,7 +144,7 @@ def create_state_list(index):
 
 def get_stats_send(sender_id, state):
     response = json.loads(requests.get(
-        "https://api.covid19india.org/data.json").text)
+        "https://api.covid19india.org/data.json", timeout=60).text)
     list_state = response['statewise']
     for i in list_state:
         if i['state'] == state:
@@ -183,7 +183,7 @@ def call_send_api(message_data):
     }
 
     r = requests.post("https://graph.facebook.com/v5.0/me/messages",
-                      params=params, headers=headers, data=message_data)
+                      params=params, headers=headers, data=message_data, timeout=60)
 
 
 if __name__ == "__main__":

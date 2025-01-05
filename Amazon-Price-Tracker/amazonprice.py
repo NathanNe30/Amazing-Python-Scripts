@@ -20,7 +20,7 @@ user_agent = input("Enter your User-Agent string here\n")
 headers = {"User-Agent": f'{user_agent}'}
 Url = input("Drop the Url of product you wish to buy...!\n")
 
-page = requests.get(Url, headers=headers)
+page = requests.get(Url, headers=headers, timeout=60)
 soup = BeautifulSoup(page.content, "html.parser")
 
 # print(soup)

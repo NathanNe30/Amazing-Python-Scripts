@@ -27,7 +27,7 @@ def check_status(domain, url):
     printer("Testing: " + domain + url)
     try:
         link = domain + url
-        req = requests.head(link)
+        req = requests.head(link, timeout=60)
         st = str(req.status_code)
         if st.startswith(("2", "1")):
             print(green + "[+] " + st + " | Found: " + end + "[ " + url +

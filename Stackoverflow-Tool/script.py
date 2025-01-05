@@ -23,7 +23,7 @@ errorMessage = s[i+1:]
 URL = "https://api.stackexchange.com/2.2/search"
 PARAMS = {'intitle': errorType, 'tagged': 'python',
           'nottagged': errorMessage, 'sort': 'votes', 'site': 'stackoverflow'}
-r = requests.get(url=URL, params=PARAMS)
+r = requests.get(url=URL, params=PARAMS, timeout=60)
 data = r.json()
 
 links = []

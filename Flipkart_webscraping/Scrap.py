@@ -12,7 +12,7 @@ for i in range(2, 43):
     url = "https://www.flipkart.com/search?q=MOBILE+PHONE+UNDER+50000&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=" + \
         str(2)
 
-    r = requests.get(url)
+    r = requests.get(url, timeout=60)
     soup = BeautifulSoup(r.text, "lxml")
 
     box = soup.find("div", class_="_1YokD2 _3Mn1Gg")

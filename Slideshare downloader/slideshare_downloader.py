@@ -26,7 +26,7 @@ t = threading.Thread(target=animate)
 
 
 def get_image_list(url):
-    code = requests.get(url)
+    code = requests.get(url, timeout=60)
     soup = BeautifulSoup(code.text, "html.parser")
     print(f"Title: {soup.title.get_text()}")
     imgs = soup.find_all("img")

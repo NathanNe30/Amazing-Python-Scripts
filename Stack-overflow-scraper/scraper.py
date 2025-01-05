@@ -72,7 +72,7 @@ def scrape_questions():
 
     url = get_URL()
     if url:
-        page = requests.get(url)
+        page = requests.get(url, timeout=60)
     else:
         clear_progress()
         return

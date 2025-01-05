@@ -6,7 +6,7 @@ import re
 
 
 def gett():
-    contents = requests.get('https://random.dog/woof.json').json()
+    contents = requests.get('https://random.dog/woof.json', timeout=60).json()
     url = contents['url']
     return url
 
@@ -24,7 +24,7 @@ def image_urll():
 
 
 def get():
-    contents = requests.get('https://xkcd.com/info.0.json').json()
+    contents = requests.get('https://xkcd.com/info.0.json', timeout=60).json()
     img = contents['img']
     return img
 

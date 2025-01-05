@@ -181,7 +181,7 @@ def save_content(class_name, img_name):
 
     else:
         link = soup.find('img')['src']
-    response = requests.get(link)
+    response = requests.get(link, timeout=60)
 
     with open(img_name, 'wb') as f:
         f.write(response.content)
@@ -210,7 +210,7 @@ def save_multiple(img_name, elem, last_img_flag=False):
 
     else:
         link = user_image.find('img')['src']
-    response = requests.get(link)
+    response = requests.get(link, timeout=60)
 
     with open(img_name, 'wb') as f:
         f.write(response.content)

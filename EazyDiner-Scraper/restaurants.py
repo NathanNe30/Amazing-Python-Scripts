@@ -39,7 +39,7 @@ class EazyDiner:
             + self.location.replace(" ", "-").replace(",", "").lower()
         )
         try:
-            res = requests.get(url)
+            res = requests.get(url, timeout=60)
             soup = BeautifulSoup(res.text, "html.parser")
 
             restaurant_data = {"restaurants": []}

@@ -41,7 +41,7 @@ def genre(update, context):
     url = 'https://www.imdb.com/search/title/'
     genre = str(update.message.text)[7:]
     print(genre)
-    r = requests.get(url+'?genres='+genre)
+    r = requests.get(url+'?genres='+genre, timeout=60)
     soup = BeautifulSoup(r.text, "html.parser")
     title = soup.find('title')
     if title.string == 'IMDb: Advanced Title Search - IMDb':
@@ -85,7 +85,7 @@ def error(update, context):
 def get_info(movie):
     "To scrape IMDb and get genre and rating of the movie "
     url = 'https://www.imdb.com/find?q='
-    r = requests.get(url+movie+'&ref_=nv_sr_sm')
+    r = requests.get(url+movie+'&ref_=nv_sr_sm', timeout=60)
     soup = BeautifulSoup(r.text, "html.parser")
     title = soup.find('title')
     tags = soup('a')
@@ -102,7 +102,7 @@ def get_info(movie):
             link = re.search('/title/(.*?)/', str(m))
             new_url = 'https://www.imdb.com'+str(link.group(0))
             if new_url != pre_url:
-                html = requests.get(new_url)
+                html = requests.get(new_url, timeout=60)
                 soup2 = BeautifulSoup(html.text, "html.parser")
                 movietitle = soup2.find('title').string.replace('- IMDb', ' ')
                 a = soup2('a')

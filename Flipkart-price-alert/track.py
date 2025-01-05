@@ -24,7 +24,7 @@ def sendMail(title):
 
 def priceCheck():
     '''Price checking function'''
-    page = requests.get(PRODUCT_URL, headers=headers)
+    page = requests.get(PRODUCT_URL, headers=headers, timeout=60)
     soup = bs(page.content, 'html.parser')
     # title from 'B_NuCI' class
     title = soup.find("span", {"class": "B_NuCI"}).get_text()[0:8] + '..'

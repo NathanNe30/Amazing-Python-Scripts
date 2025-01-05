@@ -15,7 +15,7 @@ class Product:
                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \
                     (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36"
             }
-            r = requests.get(url, headers=headers)
+            r = requests.get(url, headers=headers, timeout=60)
             soup = BeautifulSoup(r.content, "html.parser")
             product = soup.find("div", {"class": "s-product-image-container"})
             product_link = product.find(
@@ -55,7 +55,7 @@ class Product:
                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \
                     (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36"
             }
-            r = requests.get(product_link, headers=headers)
+            r = requests.get(product_link, headers=headers, timeout=60)
             soup = BeautifulSoup(r.content, "html.parser")
             product_name = soup.find(
                 "span", {"id": "productTitle"}).text.strip()
@@ -104,7 +104,7 @@ class Product:
                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \
                     (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36"
             }
-            r = requests.get(product_link, headers=headers)
+            r = requests.get(product_link, headers=headers, timeout=60)
             soup = BeautifulSoup(r.content, "html.parser")
             product_image = soup.find(
                 "img", {"class": "a-dynamic-image a-stretch-horizontal"}
@@ -144,7 +144,7 @@ class Product:
                 "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 \
                     (KHTML, like Gecko) Chrome/88.0.4324.96 Safari/537.36"
             }
-            r = requests.get(product_link, headers=headers)
+            r = requests.get(product_link, headers=headers, timeout=60)
             soup = BeautifulSoup(r.content, "html.parser")
 
             review_elements = soup.find_all("div", {"data-hook": "review"})

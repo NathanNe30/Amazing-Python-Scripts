@@ -1,7 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 
-response=requests.get("https://www.magicbricks.com/flats-in-kolkata-for-sale-pppfs")
+response=requests.get("https://www.magicbricks.com/flats-in-kolkata-for-sale-pppfs", timeout=60)
 print(response.status_code)
 
 

@@ -16,7 +16,7 @@ def dalle(message):
         size="1024x1024"
     )
     image_url = response['data'][0]['url']
-    response = requests.get(image_url)
+    response = requests.get(image_url, timeout=60)
     with open("image.jpg", "wb") as f:
         f.write(response.content)
 

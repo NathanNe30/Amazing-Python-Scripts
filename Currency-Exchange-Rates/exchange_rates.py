@@ -3,7 +3,7 @@ import requests as req
 
 currencies = []
 
-page = req.get('https://www.x-rates.com/').text
+page = req.get('https://www.x-rates.com/', timeout=60).text
 
 soup = BeautifulSoup(page, 'html.parser')
 
@@ -26,7 +26,7 @@ amount = input(
 currencies_table_url = 'https://www.x-rates.com/table/?from={}&amount={}'.format(
     currency['short'], amount)
 
-currencies_table_page = req.get(currencies_table_url).text
+currencies_table_page = req.get(currencies_table_url, timeout=60).text
 
 soup = BeautifulSoup(currencies_table_page, 'html.parser')
 

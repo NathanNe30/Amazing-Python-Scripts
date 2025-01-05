@@ -22,7 +22,7 @@ def Download_vid():
     if not "twitter.com" in url:
         Invalid_URL()
         return
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
     if not response.status_code == 200:
         Invalid_URL()
         response.close()

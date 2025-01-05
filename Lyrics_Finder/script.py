@@ -3,7 +3,7 @@ import requests
 
 def find_lyrics(artist, title):
     base_url = 'https://api.lyrics.ovh/v1/{}/{}'.format(artist, title)
-    response = requests.get(base_url)
+    response = requests.get(base_url, timeout=60)
 
     if response.status_code == 200:
         data = response.json()

@@ -10,7 +10,7 @@ headers = {
 
 def amazon(item):
     URL = "https://www.amazon.in/s?k=" + item.replace(" ", "+")
-    page = requests.get(URL, headers=headers)
+    page = requests.get(URL, headers=headers, timeout=60)
     soup = BeautifulSoup(page.content, "html.parser")
     name = "Amazon"
     # For access to product links un-comment these:
@@ -35,7 +35,7 @@ def amazon(item):
 
 def flipkart(item):
     URL = "https://www.flipkart.com/search?q=" + item
-    page = requests.get(URL, headers=headers)
+    page = requests.get(URL, headers=headers, timeout=60)
     soup = BeautifulSoup(page.content, "html.parser")
     name = "Flipkart"
     # For access to product links un-comment these:
@@ -58,7 +58,7 @@ def flipkart(item):
 
 def snapdeal(item):
     URL = "https://www.snapdeal.com/search?keyword=" + item.replace(" ", "+")
-    page = requests.get(URL, headers=headers)
+    page = requests.get(URL, headers=headers, timeout=60)
     soup = BeautifulSoup(page.content, "html.parser")
     name = "Snapdeal"
 

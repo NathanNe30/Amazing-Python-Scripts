@@ -31,7 +31,7 @@ fbid = int(input("Enter the Facebook-id to download it's profile picture: "))
 # the number should be a valid Facebook user id
 
 try:
-    result = requests.get(url.format(fbid))
+    result = requests.get(url.format(fbid), timeout=60)
     with open("fb_dps/{}_img.jpg".format(fbid), "wb") as file:
         file.write(result.content)
 

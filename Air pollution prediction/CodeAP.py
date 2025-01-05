@@ -5,7 +5,7 @@ url = 'http://api.waqi.info/feed/' + city + '/?token='
 api_key = input("Enter your API key: ")
 
 main_url = url + api_key
-r = requests.get(main_url)
+r = requests.get(main_url, timeout=60)
 data = r.json()['data']
 aqi = data['aqi']
 iaqi = data['iaqi']
