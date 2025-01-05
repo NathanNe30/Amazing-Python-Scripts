@@ -34,7 +34,7 @@ class Fetch_PullRequests:
                 lists the repositories
 
         """
-        page = requests.get(self.ORG_URL)
+        page = requests.get(self.ORG_URL, timeout=60)
         tree = html.fromstring(page.content)
         number_of_pages = tree.xpath(
             '//*[@id="org-repositories"]/div/div/div[2]/div/em/@data-total-pages')
@@ -44,7 +44,7 @@ class Fetch_PullRequests:
                 '//*[contains(concat( " ", @class, " " ), concat( " ", "wb-break-all", " " ))]//*[contains(concat( " ", @class, " " ), concat( " ", "d-inline-block", " " ))]/text()'))
         else:
             for number in range(1, int(number_of_pages[0]) + 1):
-                page_ = requests.get(self.ORG_URL + f"?page={number}")
+                page_ = requests.get(self.ORG_URL + f"?page={number}", timeout=60)
                 tree = html.fromstring(page_.content)
                 Repositories.extend(tree.xpath(
                     '//*[contains(concat( " ", @class, " " ), concat( " ", "wb-break-all", " " ))]//*[contains(concat( " ", @class, " " ), concat( " ", "d-inline-block", " " ))]/text()'))
@@ -71,7 +71,7 @@ class Fetch_PullRequests:
         Link = []
         Status = []
         URL = self.URL + f"/{repo}/pulls?q=is%3Apr+author%3A{self.username}"
-        page = requests.get(URL)
+        page = requests.get(URL, timeout=60)
         tree = html.fromstring(page.content)
         # to determine the number of pages
         number_of_pages = tree.xpath(
@@ -92,7 +92,7 @@ class Fetch_PullRequests:
             for number in range(1, int(number_of_pages[0]) + 1):
                 URL = self.URL + \
                     f"/{repo}/pulls?page={number}&q=is%3Apr+author%3A{self.username}"
-                page = requests.get(URL)
+                page = requests.get(URL, timeout=60)
                 tree = html.fromstring(page.content)
 
                 # Title.extend(tree.xpath('//*[contains(concat( " ", @class, " " ), concat( " ", "markdown-title", " " ))]/text()'))

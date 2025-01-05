@@ -11,7 +11,7 @@ def doh_dns_lookup(domain, record_type):
         "Accept": "application/dns-json"
     }
 
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, timeout=60)
 
     if response.status_code == 200:
         return response.json()

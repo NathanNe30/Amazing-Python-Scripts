@@ -14,7 +14,7 @@ def notify_user(title, message):
 
 
 def getInfo(url):
-    r = requests.get(url)
+    r = requests.get(url, timeout=60)
     return r.text
 
 

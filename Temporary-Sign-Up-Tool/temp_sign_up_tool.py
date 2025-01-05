@@ -43,12 +43,12 @@ def generateEmailIdAndLink():
     }
 
     # using request.get on https://10minutemail.net/ site, and pass header as extra data
-    response = requests.get('https://10minutemail.net/', headers=headers)
+    response = requests.get('https://10minutemail.net/', headers=headers, timeout=60)
     # the response has session Id required to retrieve email and link
     ses = str(response.cookies).split(",")[2].split(" ")[2]
 
     # we then pass this session id to get JSON data for the email
-    response = requests.get('https://10minutemail.net/address.api.php?' + ses)
+    response = requests.get('https://10minutemail.net/address.api.php?' + ses, timeout=60)
     page_soup = soup(response.content, "html.parser")  # saving the json
 
     # selecting the needed data from the json, cleaning the data

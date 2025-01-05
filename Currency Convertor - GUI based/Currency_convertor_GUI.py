@@ -8,7 +8,7 @@ def calculate_conversion():
     url = "https://api.exchangerate-api.com/v4/latest/INR"
 
     # Receive Data from API
-    data = requests.get(url).json()
+    data = requests.get(url, timeout=60).json()
     currency_rates = data['rates']
 
     # get From amount from GUI
@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
     # url and data extraction
     url = "https://api.exchangerate-api.com/v4/latest/INR"
-    data = requests.get(url).json()
+    data = requests.get(url, timeout=60).json()
     currency_rates = data['rates']
 
     # Building of GUI

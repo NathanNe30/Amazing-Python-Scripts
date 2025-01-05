@@ -35,7 +35,7 @@ class GoogleNews:
         """
         url = "https://www.google.com/search?q=" + self.topic + "&tbm=nws"
         try:
-            res = requests.get(url)
+            res = requests.get(url, timeout=60)
             soup = BeautifulSoup(res.text, "html.parser")
 
             articles_data = {"articles": []}

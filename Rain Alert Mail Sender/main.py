@@ -25,7 +25,7 @@ PARAMETER_LOCATION = {
     'city': CITY,
     'format': 'json',
 }
-response_location = requests.get(url=API_END_POINT, params=PARAMETER_LOCATION)
+response_location = requests.get(url=API_END_POINT, params=PARAMETER_LOCATION, timeout=60)
 data_location = response_location .json()
 LAT = data_location[0]['lat']
 LONG = data_location[0]['lon']
@@ -36,7 +36,7 @@ PARAMETER = {
     "exclude": "current,minutely,daily",
 }
 api = requests.get(
-    url="http://api.openweathermap.org/data/2.5/onecall", params=PARAMETER)
+    url="http://api.openweathermap.org/data/2.5/onecall", params=PARAMETER, timeout=60)
 data = api.json()
 
 bring_umbrella = False

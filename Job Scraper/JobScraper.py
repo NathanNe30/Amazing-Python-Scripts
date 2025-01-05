@@ -31,7 +31,7 @@ def job_scraper():
     num = int(input("Enter the number of job openings to obtain: "))
 
     url = f'https://in.indeed.com/jobs?q={title}&l={loc}'
-    req_page = requests.get(url)
+    req_page = requests.get(url, timeout=60)
 
     job_array = []
 
@@ -95,7 +95,7 @@ def job_scraper():
 
                 time.sleep(2)
 
-                req_page = requests.get(next_page_link)
+                req_page = requests.get(next_page_link, timeout=60)
                 soup = BeautifulSoup(req_page.text, "html.parser")
                 job_table = soup.find("td", id="resultsCol")
 

@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 
 url = 'https://www.codechef.com/problems/TWORANGES?tab=statement'
-response = requests.get(url)
+response = requests.get(url, timeout=60)
 soup = BeautifulSoup(response.content, 'html.parser')
 
 # Print the title of the webpage

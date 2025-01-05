@@ -26,7 +26,7 @@ def getImage():
     search = search_box.get()
     url = "https://www.bing.com/images/search?q={}".format(
         search.replace(' ', '?'))
-    page = requests.get(url)
+    page = requests.get(url, timeout=60)
 
     # Start scraping resultant html data
     soup = BeautifulSoup(page.content, 'html.parser')

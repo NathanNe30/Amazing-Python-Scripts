@@ -31,7 +31,7 @@ def Download_vid():
         Invalid_Url()
         return
 
-    response = req.get(url)
+    response = req.get(url, timeout=60)
 
     if not response.status_code == 200:
         Invalid_Url()
@@ -66,7 +66,7 @@ class VideoDownload(Thread):
 
         # save the picture to a file
         block_size = 1024  # 1kB
-        r = req.get(self.url, stream=True)
+        r = req.get(self.url, stream=True, timeout=60)
         total_size = int(r.headers.get("content-length"))
 
         with open('video.mp4', 'wb') as file:

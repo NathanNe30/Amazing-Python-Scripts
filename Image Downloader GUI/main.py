@@ -34,7 +34,7 @@ def download_img():
         return
 
     try:
-        img_content = requests.get(u).content
+        img_content = requests.get(u, timeout=60).content
         with open(img_path, "wb") as handler:
             handler.write(img_content)
             messagebox.showinfo("Success", f"Image downloaded to:\n{img_path}")

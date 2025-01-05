@@ -34,7 +34,7 @@ latest_url = ""
 
 def get_latest_article():
     global latest_article
-    response = requests.get(url, params=params)
+    response = requests.get(url, params=params, timeout=60)
     articles = response.json()['articles']
     latest_article = articles[0]
     return latest_article

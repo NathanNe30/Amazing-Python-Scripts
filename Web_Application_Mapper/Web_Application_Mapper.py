@@ -28,7 +28,7 @@ def test_remote():
 
         url = f"{target}{path}"
         try:
-            response = requests.get(url)
+            response = requests.get(url, timeout=60)
             print(f"[{response.status_code}] => {path}")
         except requests.HTTPError as error:
             print(f"Failed {error}")

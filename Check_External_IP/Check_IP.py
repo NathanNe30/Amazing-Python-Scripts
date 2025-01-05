@@ -5,7 +5,7 @@ import re
 import requests
 
 ur_url = "http://checkip.dyndns.org"
-request = requests.get(ur_url)
+request = requests.get(ur_url, timeout=60)
 _result = request.text.split(': ', 1)[1]
 your_ip = _result.split('</body></html>', 1)[0]
 

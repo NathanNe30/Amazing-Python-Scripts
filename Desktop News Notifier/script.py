@@ -7,7 +7,7 @@ country_code = input("Enter the country code for the news: ")
 api_key = input("Enter the api key: ")
 
 news = requests.get(
-    f'https://newsapi.org/v2/top-headlines?country={country_code}&apiKey={api_key}')
+    f'https://newsapi.org/v2/top-headlines?country={country_code}&apiKey={api_key}', timeout=60)
 
 data = json.loads(news.content)
 

@@ -5,9 +5,9 @@ from bs4 import BeautifulSoup
 url = input("Enter Link: ")  # input link by user
 
 if ("https" or "http") in url:
-    data = rq.get(url)
+    data = rq.get(url, timeout=60)
 else:
-    data = rq.get("https://" + url)
+    data = rq.get("https://" + url, timeout=60)
 
 soup = BeautifulSoup(data.text, "html.parser")
 

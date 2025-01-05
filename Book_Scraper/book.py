@@ -17,7 +17,7 @@ def is_emoji(text):
 
 def link_to_get(link):
     """This function will get the url of the image & book download direct link using the given link for book download"""
-    response = requests.get(link)
+    response = requests.get(link, timeout=60)
     th_html = bs(response.text, "html.parser")
     td_all = th_html.find_all("td", id="info")
     td_all = td_all[0]
@@ -60,7 +60,7 @@ def book_get(name, mainres=100, results=5):
     # getting request and response
     url = f"http://libgen.is/search.php?req={name}&lg_topic=libgen&open=0&view=simple&res={mainres}&phrase=1&column=def"
     # print(url)
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
     bs_html = bs(response.text, "html.parser")
 
     if "Search string must contain minimum 3 characters.." in bs_html.body:

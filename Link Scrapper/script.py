@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 
 
 def scrape_links(url):
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
     soup = BeautifulSoup(response.text, 'html.parser')
     links = soup.find_all('a')
     for link in links:

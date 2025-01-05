@@ -41,7 +41,7 @@ class Video:
         """
         url = self.video_url
         try:
-            res = requests.get(url)
+            res = requests.get(url, timeout=60)
             soup = BeautifulSoup(res.text, "html.parser")
             video_data = {"video_data": []}
 

@@ -37,7 +37,7 @@ class TechCrunch:
             category.replace(" ", "-").lower()
         )
         try:
-            res = requests.get(url)
+            res = requests.get(url, timeout=60)
             soup = BeautifulSoup(res.text, "html.parser")
 
             articles_data = {"articles": []}
@@ -120,7 +120,7 @@ class TechCrunch:
         """
         url = "https://search.techcrunch.com/search?p=" + topic + "&fr=techcrunch"
         try:
-            res = requests.get(url)
+            res = requests.get(url, timeout=60)
             soup = BeautifulSoup(res.text, "html.parser")
 
             articles_data = {"articles": []}

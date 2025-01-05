@@ -53,7 +53,7 @@ def main(emotion):
 
     # HTTP request to get the data of
     # the whole page
-    response = HTTP.get(urlhere)
+    response = HTTP.get(urlhere, timeout=60)
     data = response.text
 
     # Parsing the data using

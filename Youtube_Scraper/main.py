@@ -24,7 +24,7 @@ def getAbout(channel_username):
     """
     url = f"https://www.youtube.com/@{channel_username}/about"
     try:
-        res = requests.get(url)
+        res = requests.get(url, timeout=60)
         soup = BeautifulSoup(res.text, "html.parser")
         channel_data = {"channel_data": []}
         link_data = {"link_data": []}

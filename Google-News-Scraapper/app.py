@@ -7,7 +7,7 @@ def get_google_news_result(term, count):
     results = []
     obj = parseString(
         requests.get('http://news.google.com/news?q=%s&output=rss' %
-                     term).text)
+                     term, timeout=60).text)
     items = obj.getElementsByTagName('item')
     # Storing the Titles and Links
     titles = list()

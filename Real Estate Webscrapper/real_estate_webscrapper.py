@@ -8,7 +8,7 @@ headers = {
 }
 
 r = requests.get(
-    "https://www.magicbricks.com/ready-to-move-flats-in-new-delhi-pppfs", headers=headers)
+    "https://www.magicbricks.com/ready-to-move-flats-in-new-delhi-pppfs", headers=headers, timeout=60)
 c = r.content
 soup = BeautifulSoup(c, "html.parser")
 

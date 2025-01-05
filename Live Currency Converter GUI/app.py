@@ -40,7 +40,7 @@ class CurrencyConverterApp:
     def get_rates(self):
         payload = {"access_key": API_KEY}
 
-        response = requests.get(url=BASE_URL, params=payload)
+        response = requests.get(url=BASE_URL, params=payload, timeout=60)
         data = response.json()
 
         return data.get("rates")

@@ -10,7 +10,7 @@ def send_request_to_API(start_char):
     # first 5 characters of hashed password added to the URL
     url = 'https://api.pwnedpasswords.com/range/' + start_char
     try:
-        res = requests.get(url)
+        res = requests.get(url, timeout=60)
 
         # Only status code of 200 returns relevant data
         if res.status_code != 200:

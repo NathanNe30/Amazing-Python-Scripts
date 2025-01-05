@@ -14,7 +14,7 @@ def get_temp():
     # Searching it on google
     url = f"https://www.google.com/search?&q={search}"
     # Sending and Receiving Requests
-    r = requests.get(url)
+    r = requests.get(url, timeout=60)
     # Scrape the temperature from the search results
     s = BeautifulSoup(r.text, "html.parser")
     # Storing details

@@ -101,7 +101,7 @@ def scrape_users():
     url_lang = language.get()
     date_range = date_helper()
     url = get_URL()
-    page = requests.get(url)
+    page = requests.get(url, timeout=60)
 
     # Start scraping resultant html data
     soup = BeautifulSoup(page.content, 'html.parser')

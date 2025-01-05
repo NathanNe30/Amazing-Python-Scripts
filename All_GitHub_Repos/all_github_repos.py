@@ -14,7 +14,7 @@ username = sys.argv[1]
 
 url = f"https://api.github.com/users/{username}"
 
-user_data = requests.get(url).json()
+user_data = requests.get(url, timeout=60).json()
 # to retrieve data contained in the url in json format
 
 
