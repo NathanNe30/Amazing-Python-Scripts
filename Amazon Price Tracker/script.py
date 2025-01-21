@@ -1,15 +1,15 @@
-import requests
 from bs4 import BeautifulSoup
 import time
 import smtplib
 from email.mime.text import MIMEText
+from security import safe_requests
 
 
 def get_amazon_product_price(product_url):
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
     }
-    response = requests.get(product_url, headers=headers)
+    response = safe_requests.get(product_url, headers=headers)
 
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, 'html.parser')

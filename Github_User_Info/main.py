@@ -1,10 +1,10 @@
-import requests
 import argparse
+from security import safe_requests
 
 
 def main(args):
     URL = f"https://api.github.com/users/{args.u}"
-    res = requests.get(URL).json()
+    res = safe_requests.get(URL).json()
     output = ""
     output += "Username: "+res['login']
     if (res['name']):

@@ -1,12 +1,12 @@
 
 from plyer import notification
-import requests
 import json
+from security import safe_requests
 
 country_code = input("Enter the country code for the news: ")
 api_key = input("Enter the api key: ")
 
-news = requests.get(
+news = safe_requests.get(
     f'https://newsapi.org/v2/top-headlines?country={country_code}&apiKey={api_key}')
 
 data = json.loads(news.content)

@@ -1,7 +1,8 @@
-import requests
 from bs4 import BeautifulSoup as bs
 import smtplib
 import time
+from security import safe_requests
+
 headers = {'User-Agent': 'Mozilla/5.0 Chrome/86.0.4240.75'}
 
 
@@ -24,7 +25,7 @@ def sendMail(title):
 
 def priceCheck():
     '''Price checking function'''
-    page = requests.get(PRODUCT_URL, headers=headers)
+    page = safe_requests.get(PRODUCT_URL, headers=headers)
     soup = bs(page.content, 'html.parser')
     # title from 'B_NuCI' class
     title = soup.find("span", {"class": "B_NuCI"}).get_text()[0:8] + '..'

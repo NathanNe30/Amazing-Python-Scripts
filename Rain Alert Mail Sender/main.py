@@ -1,7 +1,7 @@
-import requests
 from smtplib import SMTP
 import os
 from dotenv import load_dotenv
+from security import safe_requests
 
 load_dotenv()
 
@@ -25,7 +25,7 @@ PARAMETER_LOCATION = {
     'city': CITY,
     'format': 'json',
 }
-response_location = requests.get(url=API_END_POINT, params=PARAMETER_LOCATION)
+response_location = safe_requests.get(url=API_END_POINT, params=PARAMETER_LOCATION)
 data_location = response_location .json()
 LAT = data_location[0]['lat']
 LONG = data_location[0]['lon']
@@ -35,7 +35,7 @@ PARAMETER = {
     "appid": API_KEY,
     "exclude": "current,minutely,daily",
 }
-api = requests.get(
+api = safe_requests.get(
     url="http://api.openweathermap.org/data/2.5/onecall", params=PARAMETER)
 data = api.json()
 

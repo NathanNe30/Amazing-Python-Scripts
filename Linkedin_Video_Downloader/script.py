@@ -1,13 +1,13 @@
 # ALL Imports
 
 import tkinter as tk
-import requests as req
 import html
 import time
 from tkinter.ttk import *
 from threading import Thread
 import queue
 from queue import Empty
+from security import safe_requests
 
 
 def Invalid_Url():
@@ -31,7 +31,7 @@ def Download_vid():
         Invalid_Url()
         return
 
-    response = req.get(url)
+    response = safe_requests.get(url)
 
     if not response.status_code == 200:
         Invalid_Url()
@@ -66,7 +66,7 @@ class VideoDownload(Thread):
 
         # save the picture to a file
         block_size = 1024  # 1kB
-        r = req.get(self.url, stream=True)
+        r = safe_requests.get(self.url, stream=True)
         total_size = int(r.headers.get("content-length"))
 
         with open('video.mp4', 'wb') as file:

@@ -2,9 +2,9 @@
 
 # to convert it into a script by running sudo chmod +x all_github_repos.py
 
-import requests
 import sys
 from github import Github
+from security import safe_requests
 
 # imports
 # pip3/pip install PyGithub is installed to work with the contents of the Github repositories
@@ -14,7 +14,7 @@ username = sys.argv[1]
 
 url = f"https://api.github.com/users/{username}"
 
-user_data = requests.get(url).json()
+user_data = safe_requests.get(url).json()
 # to retrieve data contained in the url in json format
 
 

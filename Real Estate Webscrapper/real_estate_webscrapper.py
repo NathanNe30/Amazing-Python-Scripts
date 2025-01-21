@@ -1,13 +1,13 @@
-import requests
 from bs4 import BeautifulSoup
 import pandas
+from security import safe_requests
 
 
 headers = {
     'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10.12; rv:55.0) Gecko/20100101 Firefox/55.0',
 }
 
-r = requests.get(
+r = safe_requests.get(
     "https://www.magicbricks.com/ready-to-move-flats-in-new-delhi-pppfs", headers=headers)
 c = r.content
 soup = BeautifulSoup(c, "html.parser")

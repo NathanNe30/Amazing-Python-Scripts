@@ -1,5 +1,5 @@
-import requests
 from bs4 import BeautifulSoup
+from security import safe_requests
 
 
 class GoogleNews:
@@ -35,7 +35,7 @@ class GoogleNews:
         """
         url = "https://www.google.com/search?q=" + self.topic + "&tbm=nws"
         try:
-            res = requests.get(url)
+            res = safe_requests.get(url)
             soup = BeautifulSoup(res.text, "html.parser")
 
             articles_data = {"articles": []}

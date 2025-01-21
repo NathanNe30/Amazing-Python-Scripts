@@ -2,12 +2,13 @@ import sys
 import requests
 from bs4 import BeautifulSoup
 import time
+from security import safe_requests
 
 
 def display_content(url, selector):
     try:
         # Send a GET request to the URL
-        response = requests.get(url)
+        response = safe_requests.get(url)
 
         # Check if the request was successful
         if response.status_code == 200:

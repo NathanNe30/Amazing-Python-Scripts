@@ -1,6 +1,6 @@
-import requests
 from bs4 import BeautifulSoup
 import re
+from security import safe_requests
 
 # Taking the URL input and validating using Regex
 URL = input("Enter a valid Wikipedia URL:\n")
@@ -11,7 +11,7 @@ if mo == None:
     exit()
 
 # Requesting the HTML and making the BeautifulSoup object
-req = requests.get(mo.group())
+req = safe_requests.get(mo.group())
 soup = BeautifulSoup(req.text, "lxml")
 
 # Validating if the site has content

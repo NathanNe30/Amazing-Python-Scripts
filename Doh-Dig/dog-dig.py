@@ -1,5 +1,5 @@
 import os
-import requests
+from security import safe_requests
 
 DOH_SERVER = os.environ.get(
     "DOH_SERVER", "https://cloudflare-dns.com/dns-query")
@@ -11,7 +11,7 @@ def doh_dns_lookup(domain, record_type):
         "Accept": "application/dns-json"
     }
 
-    response = requests.get(url, headers=headers)
+    response = safe_requests.get(url, headers=headers)
 
     if response.status_code == 200:
         return response.json()

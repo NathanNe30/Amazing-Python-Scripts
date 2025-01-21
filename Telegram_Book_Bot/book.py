@@ -1,13 +1,13 @@
 # for scraping books
 from bs4 import BeautifulSoup as bs
-import requests
 # to identify emoji unicode characters
 import demoji
+from security import safe_requests
 
 
 def link_to_get(link):
     """This function will get the url of the image & book download direct link using the given link for book download"""
-    response = requests.get(link)
+    response = safe_requests.get(link)
     th_html = bs(response.text, "html.parser")
     td_all = th_html.find_all("td", id="info")
     td_all = td_all[0]
@@ -45,7 +45,7 @@ def book_get(name, mainres=25, results=5):
     name = name.replace(" ", "+")
     # getting request and response
     url = f"http://libgen.is/search.php?req={name}&lg_topic=libgen&open=0&view=simple&res={mainres}&phrase=1&column=def"
-    response = requests.get(url)
+    response = safe_requests.get(url)
     bs_html = bs(response.text, "html.parser")
 
     if "Search string must contain minimum 3 characters.." in bs_html.body:

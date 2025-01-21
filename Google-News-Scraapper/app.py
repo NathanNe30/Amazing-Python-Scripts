@@ -1,12 +1,12 @@
-import requests
 from xml.dom.minidom import parseString
 import pandas as pd
+from security import safe_requests
 
 
 def get_google_news_result(term, count):
     results = []
     obj = parseString(
-        requests.get('http://news.google.com/news?q=%s&output=rss' %
+        safe_requests.get('http://news.google.com/news?q=%s&output=rss' %
                      term).text)
     items = obj.getElementsByTagName('item')
     # Storing the Titles and Links

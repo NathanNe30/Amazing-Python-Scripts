@@ -1,6 +1,6 @@
 from tkinter import *
 import subprocess
-import requests
+from security import safe_requests
 
 
 def Invalid_URL():
@@ -22,7 +22,7 @@ def Download_vid():
     if not "twitter.com" in url:
         Invalid_URL()
         return
-    response = requests.get(url)
+    response = safe_requests.get(url)
     if not response.status_code == 200:
         Invalid_URL()
         response.close()

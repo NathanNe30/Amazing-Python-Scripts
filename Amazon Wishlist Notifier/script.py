@@ -1,8 +1,8 @@
-import requests
 from bs4 import BeautifulSoup
 import time
 import smtplib
 from email.mime.text import MIMEText
+from security import safe_requests
 
 # Replace with your own email and password
 SENDER_EMAIL = 'your_sender_email@gmail.com'
@@ -17,7 +17,7 @@ def get_wishlist_items():
     headers = {
         "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.3"
     }
-    response = requests.get(WISHLIST_URL, headers=headers)
+    response = safe_requests.get(WISHLIST_URL, headers=headers)
 
     if response.status_code == 200:
         soup = BeautifulSoup(response.content, 'html.parser')

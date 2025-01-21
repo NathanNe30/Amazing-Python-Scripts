@@ -4,8 +4,8 @@ from selenium.webdriver.common.keys import Keys
 import selenium.common.exceptions
 import time
 from bs4 import BeautifulSoup as bs
-import requests
 import os
+from security import safe_requests
 
 
 # get instagram account credentials
@@ -181,7 +181,7 @@ def save_content(class_name, img_name):
 
     else:
         link = soup.find('img')['src']
-    response = requests.get(link)
+    response = safe_requests.get(link)
 
     with open(img_name, 'wb') as f:
         f.write(response.content)
@@ -210,7 +210,7 @@ def save_multiple(img_name, elem, last_img_flag=False):
 
     else:
         link = user_image.find('img')['src']
-    response = requests.get(link)
+    response = safe_requests.get(link)
 
     with open(img_name, 'wb') as f:
         f.write(response.content)

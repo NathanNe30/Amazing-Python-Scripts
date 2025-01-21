@@ -1,6 +1,6 @@
-import requests
 import json
 from responses import PageSpeedResponse
+from security import safe_requests
 
 
 class PageSpeed(object):
@@ -44,7 +44,7 @@ class PageSpeed(object):
             raise ValueError('invalid strategy: {0}'.format(strategy))
 
         # Returns raw data
-        raw = requests.get(self.endpoint, params=params)
+        raw = safe_requests.get(self.endpoint, params=params)
 
         response = PageSpeedResponse(raw)
 

@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-import requests
+from security import safe_requests
 
 BASE_URL = "http://api.exchangeratesapi.io/v1/latest"
 API_KEY = "Your API Key"
@@ -40,7 +40,7 @@ class CurrencyConverterApp:
     def get_rates(self):
         payload = {"access_key": API_KEY}
 
-        response = requests.get(url=BASE_URL, params=payload)
+        response = safe_requests.get(url=BASE_URL, params=payload)
         data = response.json()
 
         return data.get("rates")

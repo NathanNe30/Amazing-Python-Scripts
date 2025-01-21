@@ -1,8 +1,8 @@
-import requests
 import csv
 import time
 import sqlite3
 from bs4 import BeautifulSoup
+from security import safe_requests
 
 
 def sql_connection():
@@ -80,7 +80,7 @@ def scraper():
         # Using a user-agent to mimic browser activity
         headers = {'User-Agent': 'Mozilla/5.0'}
 
-        req = requests.get(url, headers=headers)
+        req = safe_requests.get(url, headers=headers)
 
         if req.status_code == 200:
             soup = BeautifulSoup(req.text, 'html.parser')
@@ -140,7 +140,7 @@ def scraper():
 
                     time.sleep(2)
 
-                    req = requests.get(next_page_link, headers=headers)
+                    req = safe_requests.get(next_page_link, headers=headers)
                     soup = BeautifulSoup(req.text, 'html.parser')
                 except:
                     break

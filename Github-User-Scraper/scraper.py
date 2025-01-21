@@ -1,4 +1,3 @@
-import requests
 from bs4 import BeautifulSoup
 import tkinter as tk
 from tkinter import ttk
@@ -8,6 +7,7 @@ import sqlite3
 from sqlite3 import Error
 import time
 import datetime
+from security import safe_requests
 
 # Dictionary for date values
 dates = {'Today': 'daily', 'This week': 'weekly', 'This month': 'monthly'}
@@ -101,7 +101,7 @@ def scrape_users():
     url_lang = language.get()
     date_range = date_helper()
     url = get_URL()
-    page = requests.get(url)
+    page = safe_requests.get(url)
 
     # Start scraping resultant html data
     soup = BeautifulSoup(page.content, 'html.parser')

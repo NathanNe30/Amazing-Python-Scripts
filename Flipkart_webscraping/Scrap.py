@@ -1,6 +1,6 @@
 import pandas as pd
-import requests
 from bs4 import BeautifulSoup
+from security import safe_requests
 
 Product_name = []
 Prices = []
@@ -12,7 +12,7 @@ for i in range(2, 43):
     url = "https://www.flipkart.com/search?q=MOBILE+PHONE+UNDER+50000&otracker=search&otracker1=search&marketplace=FLIPKART&as-show=on&as=off&page=" + \
         str(2)
 
-    r = requests.get(url)
+    r = safe_requests.get(url)
     soup = BeautifulSoup(r.text, "lxml")
 
     box = soup.find("div", class_="_1YokD2 _3Mn1Gg")

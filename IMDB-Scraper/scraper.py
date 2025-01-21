@@ -1,6 +1,6 @@
-import requests
 from bs4 import BeautifulSoup as bs
 import argparse
+from security import safe_requests
 
 
 parser = argparse.ArgumentParser(description='IMDB Scraper')
@@ -62,7 +62,7 @@ def get_info(soup):
 
 def find_movie(query):
     url = base+query
-    resp = requests.get(url)
+    resp = safe_requests.get(url)
 # for parsing we have used the lxml parser for optimization purposes, if lxml does not work for you replace 'lxml' with 'html.parser'
     soup1 = bs(resp.text, 'lxml')
 # Since for every query imdb gives about 150-200 responses , we choose the top 5 and return the details for them
@@ -74,7 +74,7 @@ def find_movie(query):
                 'td', attrs={"class": "result_text"}).a.attrs["href"][6:]
 
             url = base_id+title_id
-            respo = requests.get(base_id+title_id)
+            respo = safe_requests.get(base_id+title_id)
             soup = bs(respo.text, 'lxml')
             get_info(soup)
     else:

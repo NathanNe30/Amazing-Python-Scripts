@@ -1,13 +1,13 @@
 # Scrape all HTML <img> tags from a provided URL.
 
 from bs4 import BeautifulSoup
-import requests
 import sys
+from security import safe_requests
 
 if len(sys.argv) != 2:
     sys.exit("Usage: python scrape_images.py {url}")
 
-response = requests.get(
+response = safe_requests.get(
     sys.argv[1],
     headers={
         "User-Agent": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/77.0.3865.90 Safari/537.36"

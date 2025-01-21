@@ -1,9 +1,9 @@
 import os
 import time
 import urllib
-import requests
 from urllib.parse import quote
 import array as arr
+from security import safe_requests
 
 
 class simple_image_download:
@@ -92,7 +92,7 @@ class simple_image_download:
                     keyword_to_search[i]) + "_" + str(j + 1) + ".jpg"
 
                 try:
-                    r = requests.get(object_raw, allow_redirects=True)
+                    r = safe_requests.get(object_raw, allow_redirects=True)
                     open(os.path.join(path, filename), 'wb').write(r.content)
                 except Exception as e:
                     print(e)

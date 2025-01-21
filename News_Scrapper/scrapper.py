@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
-import requests
 import csv
+from security import safe_requests
 
 URL = "https://www.indiatoday.in/"
 
@@ -19,7 +19,7 @@ def getTopTenFromDivTag(category):
     count = 0
     category_url = URL + category
 
-    page = requests.get(category_url)
+    page = safe_requests.get(category_url)
     soup = BeautifulSoup(page.text, "html.parser")
 
     all_div_tags = soup.find_all(class_="detail")
@@ -41,7 +41,7 @@ def getTopTenFromLiTag(category):
     count = 0
     category_url = URL + category
 
-    page = requests.get(category_url)
+    page = safe_requests.get(category_url)
     soup = BeautifulSoup(page.text, "html.parser")
 
     ul_tag = soup.find_all(class_="itg-listing")

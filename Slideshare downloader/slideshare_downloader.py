@@ -1,6 +1,5 @@
 # slideshare downloader
 from bs4 import BeautifulSoup
-import requests
 import itertools
 import threading
 import time
@@ -8,6 +7,7 @@ import sys
 import urllib.request
 import img2pdf
 import os
+from security import safe_requests
 
 task = False
 process = "getting the slides "
@@ -26,7 +26,7 @@ t = threading.Thread(target=animate)
 
 
 def get_image_list(url):
-    code = requests.get(url)
+    code = safe_requests.get(url)
     soup = BeautifulSoup(code.text, "html.parser")
     print(f"Title: {soup.title.get_text()}")
     imgs = soup.find_all("img")

@@ -1,6 +1,6 @@
-import requests as req
 import re
 import csv
+from security import safe_requests
 
 # Social Media links to look for
 media_links = [
@@ -25,7 +25,7 @@ if val == 1:
     link = input("\nEnter the website url : ")
 
     # Makes a get request to the url
-    r = req.get(link)
+    r = safe_requests.get(link)
     # print(r)
 
     if r.status_code == 200:
@@ -64,7 +64,7 @@ elif val == 2:
     # Iterating through links in csv file
     for link in csv_file:
         link = str(link).strip()
-        r = req.get(link)
+        r = safe_requests.get(link)
         # print(r)
 
         if r.status_code == 200:

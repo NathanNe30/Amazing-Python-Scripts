@@ -6,8 +6,8 @@ from googleapiclient.discovery import build
 from google_auth_oauthlib.flow import InstalledAppFlow
 from google.auth.transport.requests import Request
 from bs4 import BeautifulSoup
-import requests
 from datetime import datetime
+from security import safe_requests
 
 # Enter your own Google Calendar API json credentials file below (if you renamed it)
 api_credentials_json = 'credentials.json'
@@ -230,7 +230,7 @@ def main(current_month):
 
         # GET HTTP request
         query_page += 1
-        response = requests.get(
+        response = safe_requests.get(
             'https://nextspaceflight.com/launches/?page=' + str(query_page))
 
         soup = BeautifulSoup(response.text, 'html.parser')

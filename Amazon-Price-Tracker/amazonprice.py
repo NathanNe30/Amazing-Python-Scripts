@@ -1,9 +1,9 @@
-import requests
 from bs4 import BeautifulSoup
 import time
 import smtplib
 import pywhatkit
 import datetime
+from security import safe_requests
 
 # header = {
 # "
@@ -20,7 +20,7 @@ user_agent = input("Enter your User-Agent string here\n")
 headers = {"User-Agent": f'{user_agent}'}
 Url = input("Drop the Url of product you wish to buy...!\n")
 
-page = requests.get(Url, headers=headers)
+page = safe_requests.get(Url, headers=headers)
 soup = BeautifulSoup(page.content, "html.parser")
 
 # print(soup)

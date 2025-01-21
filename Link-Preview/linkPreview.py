@@ -1,8 +1,8 @@
-import requests
 import json
 import os
 import time
 from bs4 import BeautifulSoup
+from security import safe_requests
 
 # to scrape title
 
@@ -122,7 +122,7 @@ else:
     # if not in db get via request
 
     # getting the html
-    r = requests.get(url)
+    r = safe_requests.get(url)
     soup = BeautifulSoup(r.text, "html.parser")
 
     sevenDaysInSec = 7*24*60*60

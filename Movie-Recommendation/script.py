@@ -4,7 +4,7 @@
 # scrapping
 from bs4 import BeautifulSoup as SOUP
 import re
-import requests as HTTP
+from security import safe_requests
 
 # Main Function for scraping
 
@@ -53,7 +53,7 @@ def main(emotion):
 
     # HTTP request to get the data of
     # the whole page
-    response = HTTP.get(urlhere)
+    response = safe_requests.get(urlhere)
     data = response.text
 
     # Parsing the data using

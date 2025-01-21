@@ -1,7 +1,7 @@
-import requests
 from bs4 import BeautifulSoup
 import tkinter as tk
 from tkinter import ttk
+from security import safe_requests
 
 # Dictionary containing category and corresponding slug value
 categories = {'Most Runs': 'most-runs',
@@ -28,7 +28,7 @@ def generate_url():
 
 def scrape_results():
     url = generate_url()
-    page = requests.get(url)
+    page = safe_requests.get(url)
 
     # Start scraping resultant html data
     soup = BeautifulSoup(page.content, 'html.parser')

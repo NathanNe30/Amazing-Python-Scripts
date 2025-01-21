@@ -1,9 +1,9 @@
-import requests
+from security import safe_requests
 
 
 def find_lyrics(artist, title):
     base_url = 'https://api.lyrics.ovh/v1/{}/{}'.format(artist, title)
-    response = requests.get(base_url)
+    response = safe_requests.get(base_url)
 
     if response.status_code == 200:
         data = response.json()

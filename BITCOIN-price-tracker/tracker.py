@@ -1,6 +1,6 @@
-import requests
 from bs4 import BeautifulSoup
 import time
+from security import safe_requests
 
 # create a function to get price of cryptocurrency
 
@@ -8,7 +8,7 @@ import time
 def get_latest_crypto_price(coin):
     url = 'https://www.google.com/search?q=' + (coin) + 'price'
     # make a request to the website
-    HTML = requests.get(url)
+    HTML = safe_requests.get(url)
     # Parsse the HTML
     soup = BeautifulSoup(HTML.text, 'html.parser')
     # find the current price

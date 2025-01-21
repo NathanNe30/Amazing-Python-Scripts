@@ -1,8 +1,8 @@
 from plyer import notification
-import requests
 from bs4 import BeautifulSoup
 import time
 from englisttohindi.englisttohindi import EngtoHindi
+from security import safe_requests
 
 
 def notify_user(title, message):
@@ -14,7 +14,7 @@ def notify_user(title, message):
 
 
 def getInfo(url):
-    r = requests.get(url)
+    r = safe_requests.get(url)
     return r.text
 
 

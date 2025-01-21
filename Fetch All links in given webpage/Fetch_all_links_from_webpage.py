@@ -1,13 +1,13 @@
 # import requests module first
-import requests as rq
 from bs4 import BeautifulSoup
+from security import safe_requests
 
 url = input("Enter Link: ")  # input link by user
 
 if ("https" or "http") in url:
-    data = rq.get(url)
+    data = safe_requests.get(url)
 else:
-    data = rq.get("https://" + url)
+    data = safe_requests.get("https://" + url)
 
 soup = BeautifulSoup(data.text, "html.parser")
 
