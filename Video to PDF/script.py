@@ -60,12 +60,11 @@ def text_to_pdf(file):
     pdf.add_page()
     pdf.set_font("Arial", size=12)
     effective_page_width = pdf.w - 2*pdf.l_margin
+    with open(file, "r") as f:
 
-    f = open(file, "r")
-
-    for x in f:
-        pdf.multi_cell(effective_page_width, 0.15, x)
-        pdf.ln(0.5)
+        for x in f:
+            pdf.multi_cell(effective_page_width, 0.15, x)
+            pdf.ln(0.5)
 
     pdf.output("../Video to PDF/my_pdf.pdf")
 

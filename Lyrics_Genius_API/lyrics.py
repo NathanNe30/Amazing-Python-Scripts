@@ -2,7 +2,6 @@ import lyricsgenius as lg
 
 # File for writing the Lyrics
 filename = input('Enter a filename: ') or 'Lyrics.txt'
-file = open(filename, "w+")
 
 # Acquire a Access Token to connect with Genius API
 genius = lg.Genius(
