@@ -75,16 +75,14 @@ def scrape_news():
 
     # get all elements containing links for each news title
     all_links = browser.find_elements_by_xpath('//g-card/div/div/div[2]/a')
+    with open(newsletter_file, 'w') as file:
 
-    # open file for writing
-    file = open(newsletter_file, 'w')
-
-    # loop over each title and link, print each to the file
-    for heading, link in zip(all_headings, all_links):
-        file.write('\n\n')
-        file.write(heading.text)
-        file.write('\n')
-        file.write(link.get_attribute('href'))
+        # loop over each title and link, print each to the file
+        for heading, link in zip(all_headings, all_links):
+            file.write('\n\n')
+            file.write(heading.text)
+            file.write('\n')
+            file.write(link.get_attribute('href'))
 
     browser.close()
     print('Done. Search results exported to "newsletter.txt"')

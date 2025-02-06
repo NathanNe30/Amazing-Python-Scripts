@@ -99,10 +99,10 @@ def topic_1():
     top = 'd1_technology.txt'
 
     global a
-    a = open(top, 'r')
+    with open(top, 'r') as a:
 
-    global doc
-    doc = a.readlines()
+        global doc
+        doc = a.readlines()
 
     frame_topic.pack_forget()
     frame_chat.pack()
@@ -174,10 +174,10 @@ exsisting  files
 
     """
     global b
-    b = open(top, 'a')
+    with open(top, 'a') as b:
 
-    b.write(chat_raw)
-    b.write('\n')
+        b.write(chat_raw)
+        b.write('\n')
 
     button_write.place_forget()
     feed_answer()
