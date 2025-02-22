@@ -1,4 +1,4 @@
-import random
+import secrets
 
 # Define a list of brain teasers as tuples (question, answer)
 brain_teasers = [
@@ -14,7 +14,7 @@ brain_teasers = [
 def play_game():
     score = 0
     # Shuffle the brain teasers for a random order
-    random.shuffle(brain_teasers)
+    secrets.SystemRandom().shuffle(brain_teasers)
 
     print("Welcome to the Brain Teaser Game!")
     print("Try to answer the following brain teasers:\n")

@@ -1,11 +1,11 @@
-import random
 import tkinter as tk
 from tkinter import messagebox
+import secrets
 
 
 def choose_word():
     words = ["apple", "banana", "cherry", "date", "elderberry", "fig", "grape"]
-    return random.choice(words)
+    return secrets.choice(words)
 
 
 class HangmanGame:

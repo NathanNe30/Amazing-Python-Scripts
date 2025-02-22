@@ -1,7 +1,7 @@
 import nltk
-import random
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize
+import secrets
 
 # Sample database of recipes
 recipes = {
@@ -89,7 +89,7 @@ def generate_recipe(ingredients, preferences=None):
     if not matching_recipes:
         return "Sorry, no recipe found with those ingredients and preferences. Try something else."
 
-    generated_recipe_name = random.choice(matching_recipes)
+    generated_recipe_name = secrets.choice(matching_recipes)
     return generated_recipe_name, recipes[generated_recipe_name]["source_link"]
 
 # Function to get user ingredient substitutions
@@ -98,8 +98,7 @@ def generate_recipe(ingredients, preferences=None):
 
 
 def suggest_similar_recipes(generated_recipe_name):
-    similar_recipes = random.sample(
-        [name for name in recipes.keys() if name != generated_recipe_name], 2)
+    similar_recipes = secrets.SystemRandom().sample([name for name in recipes.keys() if name != generated_recipe_name], 2)
     return similar_recipes
 
 # Main function

@@ -4,8 +4,8 @@ from tkinter import messagebox
 import pickle
 import time
 from datetime import date, datetime
-from random import randint
 import os.path
+import secrets
 
 
 # ++++++++++++++++WINDOW++++++++++++++++
@@ -420,7 +420,7 @@ def signup():
         root, text="CAPTCHA:", font=("Bahnschrift", 12, "bold"), bg="white", fg="blue"
     )
     captcalable.place(x=1050, y=305)
-    captcavalue = str(randint(1000, 5000))
+    captcavalue = str(secrets.SystemRandom().randint(1000, 5000))
     captca = Label(
         root, text=captcavalue, font=("Rockwell", 20, "bold"), bg="blue", fg="white"
     )
@@ -611,7 +611,7 @@ filemenu.add_command(label="Quit", command=quit)
 # __main__
 
 """Images"""
-randomnumber = str(randint(1, 3))
+randomnumber = str(secrets.SystemRandom().randint(1, 3))
 bgimage = PhotoImage(file="images/bg" + randomnumber + ".png")
 loginicon = PhotoImage(file="images/loginicon.png")
 passicon = PhotoImage(file="images/passicon.png")

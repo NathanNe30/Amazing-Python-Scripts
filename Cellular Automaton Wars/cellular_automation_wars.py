@@ -1,4 +1,4 @@
-import random
+import secrets
 
 GRID_SIZE = 50
 NUM_ORGANISMS = 5
@@ -14,11 +14,11 @@ RULES = {
 def initialize_grid():
     grid = [0] * GRID_SIZE
     for _ in range(NUM_ORGANISMS):
-        organism_position = random.randint(0, GRID_SIZE - 1)
-        grid[organism_position] = random.randint(1, 5)
+        organism_position = secrets.SystemRandom().randint(0, GRID_SIZE - 1)
+        grid[organism_position] = secrets.SystemRandom().randint(1, 5)
     for _ in range(NUM_RESOURCES):
-        resource_position = random.randint(0, GRID_SIZE - 1)
-        resource_value = random.randint(1, 5)
+        resource_position = secrets.SystemRandom().randint(0, GRID_SIZE - 1)
+        resource_value = secrets.SystemRandom().randint(1, 5)
         grid[resource_position] = -resource_value
     return grid
 
@@ -40,7 +40,7 @@ def apply_rule(grid, index):
         new_state = RULES[cell_state % len(RULES)](neighbors, energy)
         if energy >= ENERGY_THRESHOLD and grid.count(0) > 1:
             empty_spots = [i for i in range(GRID_SIZE) if grid[i] == 0]
-            new_organism_position = random.choice(empty_spots)
+            new_organism_position = secrets.choice(empty_spots)
             # New organism created through reproduction.
             grid[new_organism_position] = energy // 2
         grid[index] = new_state

@@ -1,5 +1,5 @@
 import math
-import random
+import secrets
 
 
 # Arguments provide range to generate two prime numbers
@@ -15,9 +15,9 @@ def primenumbers(srt, n):
     for p in range(srt, n + 1):
         if prime[p]:
             primenos.append(p)
-    P = random.choice(primenos)
+    P = secrets.choice(primenos)
     primenos.remove(P)
-    Q = random.choice(primenos)
+    Q = secrets.choice(primenos)
     return (P, Q)
 
 

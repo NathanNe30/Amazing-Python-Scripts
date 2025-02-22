@@ -1,5 +1,5 @@
-import random
 import time
+import secrets
 
 
 dice_faces = [
@@ -44,7 +44,7 @@ dice_faces = [
 
 
 def roll_dice():
-    return random.randint(1, 6)
+    return secrets.SystemRandom().randint(1, 6)
 
 
 def print_dice(dice_value):

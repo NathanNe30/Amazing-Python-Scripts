@@ -1,9 +1,9 @@
 import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
-import random
 import string
 import pyperclip
+import secrets
 
 # main window
 root = tk.Tk()
@@ -32,17 +32,17 @@ def create_pass():
     # password of low strength
     if (strn == 1):
         for i in range(0, Len):
-            pass_wrd = pass_wrd + random.choice(lower + num)
+            pass_wrd = pass_wrd + secrets.choice(lower + num)
         return pass_wrd
     # password of medium strength
     elif (strn == 2):
         for i in range(0, Len):
-            pass_wrd = pass_wrd + random.choice(lower + upper + num)
+            pass_wrd = pass_wrd + secrets.choice(lower + upper + num)
         return pass_wrd
     # password of high strength
     elif (strn == 3):
         for i in range(0, Len):
-            pass_wrd = pass_wrd + random.choice(lower + upper + num + punc)
+            pass_wrd = pass_wrd + secrets.choice(lower + upper + num + punc)
         return pass_wrd
     else:
         messagebox.showwarning("Warning", "Select all parameters")

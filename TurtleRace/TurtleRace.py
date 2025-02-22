@@ -1,6 +1,6 @@
 import turtle as t
-import random
 import time
+import secrets
 
 scr = t.Screen()
 scr.setup(width=500, height=500)
@@ -39,5 +39,5 @@ while RaceRunning:
             else:
                 print(f"Your turtle lost, the winner is {winner} turtle!")
                 show.write(f"Your turtle lost, the winner is {winner} turtle!")
-        runner.forward(random.randint(0, 10))
+        runner.forward(secrets.SystemRandom().randint(0, 10))
 scr.exitonclick()

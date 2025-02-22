@@ -1,6 +1,6 @@
 import tkinter
 from PIL import Image, ImageTk
-import random
+import secrets
 
 # toplevel widget which represents the main window of an application
 root = tkinter.Tk()
@@ -21,7 +21,7 @@ l1.pack()
 dice = ['./Dice-Roll-Simulator/imgs/die1.png', './Dice-Roll-Simulator/imgs/die2.png', './Dice-Roll-Simulator/imgs/die3.png',
         './Dice-Roll-Simulator/imgs/die4.png', './Dice-Roll-Simulator/imgs/die5.png', './Dice-Roll-Simulator/imgs/die6.png']
 # simulating the dice with random numbers between 0 to 6 and generating image
-image1 = ImageTk.PhotoImage(Image.open(random.choice(dice)))
+image1 = ImageTk.PhotoImage(Image.open(secrets.choice(dice)))
 
 # construct a label widget for image
 label1 = tkinter.Label(root, image=image1)
@@ -34,7 +34,7 @@ label1.pack(expand=True)
 
 
 def rolling_dice():
-    image1 = ImageTk.PhotoImage(Image.open(random.choice(dice)))
+    image1 = ImageTk.PhotoImage(Image.open(secrets.choice(dice)))
     # update image
     label1.configure(image=image1)
     # keep a reference

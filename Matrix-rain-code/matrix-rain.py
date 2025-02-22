@@ -1,6 +1,6 @@
 from termcolor import colored
-from random import randint
 from time import sleep
+import secrets
 
 symbol = [[
     u"\u30A0", u"\u30A1", u"\u30A2", u"\u30A3", u"\u30A4", u"\u30A5",
@@ -36,17 +36,17 @@ symbol = [[
 while 1:
 
     chunk_template = ["" for i in range(139)]
-    chunk_length = randint(23, 31)
-    positions_to_fill = randint(21, 27)
-    symbol_positions = set([randint(0, 138) for j in range(positions_to_fill)])
+    chunk_length = secrets.SystemRandom().randint(23, 31)
+    positions_to_fill = secrets.SystemRandom().randint(21, 27)
+    symbol_positions = set([secrets.SystemRandom().randint(0, 138) for j in range(positions_to_fill)])
     symbol_positions = list(symbol_positions)
 
     for x in range(chunk_length):
 
         for a in symbol_positions:
 
-            row = randint(0, 5)
-            col = randint(0, 14)
+            row = secrets.SystemRandom().randint(0, 5)
+            col = secrets.SystemRandom().randint(0, 14)
 
             chunk_template[a] = symbol[row][col]
 

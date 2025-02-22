@@ -1,9 +1,9 @@
 import time
-from random import randint
 import pygame
 import threading
 import sys
 import os
+import secrets
 
 pygame.init()
 emojis = ['😃', '🐻‍❄️', '🐏', '🌲', '🎆', '❤️', '⛄', '🎮', '🔊', '⚙️', '😍', '😴', '🤑', '💀', '👻', '👽', '🐭', '🐸',
@@ -29,7 +29,7 @@ def wishingBot():
 
         i = 0
         while pygame.mixer.music.get_busy():
-            count = randint(1, 100)
+            count = secrets.SystemRandom().randint(1, 100)
             while count > 0:
                 space += ' '
                 count -= 1

@@ -1,6 +1,6 @@
 from tkinter import *  # Tkinter is used as the GUI.
-import random
 import tkinter.messagebox
+import secrets
 
 root = Tk()
 
@@ -716,7 +716,7 @@ def roll():   #Rolling function that rolls a dice, goes again if its a six
         print("roll: ", rollc)
 
         if rollc == 1:
-            dice = random.randint(1, 6)
+            dice = secrets.SystemRandom().randint(1, 6)
             L1 = Label(root, text=dice, fg='Black', background='green', font=("Arial", 24, "bold"))
             L1.place(x=800, y=200)
             print("dice: ", dice)
@@ -727,7 +727,7 @@ def roll():   #Rolling function that rolls a dice, goes again if its a six
 
         if rollc == 2:
             if dice == 6:
-                dice1 = random.randint(1, 6)
+                dice1 = secrets.SystemRandom().randint(1, 6)
                 L3 = Label(root, text=dice1, fg='Black', background='green', font=("Arial", 24, "bold"))
                 L3.place(x=800, y=250)
                 rolls.append(dice1)
@@ -737,7 +737,7 @@ def roll():   #Rolling function that rolls a dice, goes again if its a six
 
         if rollc == 3:
             if dice1 == 6:
-                dice2 = random.randint(1, 6)
+                dice2 = secrets.SystemRandom().randint(1, 6)
                 L4 = Label(root, text=dice2, fg='Black', background='green', font=("Arial", 24, "bold"))
                 L4.place(x=800, y=300)
                 rolls.append(dice2)

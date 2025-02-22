@@ -1,6 +1,6 @@
 import pygame
 import math
-import random
+import secrets
 
 # Initialize Pygame
 pygame.init()
@@ -126,8 +126,8 @@ while running:
         fuel = 100
         spaceship_pos = [WIDTH // 2, HEIGHT // 2]
         spaceship_vel = [0, 0]
-        celestial_bodies = [{"pos": [random.randint(50, WIDTH - 50), random.randint(50, HEIGHT - 50)],
-                             "mass": random.randint(1000, 5000)} for _ in range(level + 1)]
+        celestial_bodies = [{"pos": [secrets.SystemRandom().randint(50, WIDTH - 50), secrets.SystemRandom().randint(50, HEIGHT - 50)],
+                             "mass": secrets.SystemRandom().randint(1000, 5000)} for _ in range(level + 1)]
 
     pygame.display.flip()
     clock.tick(60)

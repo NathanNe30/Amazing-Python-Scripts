@@ -1,10 +1,10 @@
-import random
+import secrets
 
 
 def choose_random_word():
     words = ["apple", "banana", "cherry", "grape",
              "orange", "watermelon", "kiwi", "mango"]
-    return random.choice(words)
+    return secrets.choice(words)
 
 
 def display_word(word, guessed_letters):

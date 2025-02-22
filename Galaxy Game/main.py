@@ -5,12 +5,12 @@ from kivy.graphics.context_instructions import Color
 from kivy.app import App
 from kivy.core.window import Window
 from kivy import platform
-import random
 
 from kivy.config import Config
 from kivy.core.audio import SoundLoader
 from kivy.lang import Builder
 from kivy.uix.relativelayout import RelativeLayout
+import secrets
 
 Config.set('graphics', 'width', '900')
 Config.set('graphics', 'height', '400')
@@ -197,7 +197,7 @@ class MainWidget(RelativeLayout):
         print("foo1")
 
         for i in range(len(self.tiles_coordinates), self.NB_TILES):
-            r = random.randint(0, 2)
+            r = secrets.SystemRandom().randint(0, 2)
             # 0 -> straight
             # 1 -> right
             # 2 -> left

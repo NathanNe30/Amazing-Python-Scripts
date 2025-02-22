@@ -8,10 +8,10 @@ import geocoder
 import pyautogui
 
 import turtle
-import random
 
 import pygame
 import pygame.camera
+import secrets
 
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -175,8 +175,8 @@ def run_alexa():
             return False
 
         def get_random_food_position():
-            x = random.randint(- w / 2 + food_size, w / 2 - food_size)
-            y = random.randint(- h / 2 + food_size, h / 2 - food_size)
+            x = secrets.SystemRandom().randint(- w / 2 + food_size, w / 2 - food_size)
+            y = secrets.SystemRandom().randint(- h / 2 + food_size, h / 2 - food_size)
             return (x, y)
 
         def get_distance(pos1, pos2):

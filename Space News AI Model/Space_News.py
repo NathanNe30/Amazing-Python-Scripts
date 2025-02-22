@@ -6,12 +6,13 @@ from playsound import playsound
 from gtts import gTTS
 import matplotlib.pyplot as plt
 import urllib.request
-import random
 import io
 import os
 import requests
 import time
 import nasapy
+import secrets
+
 print('🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀🚀\n')
 
 # Enter the API key of NASA
@@ -240,7 +241,7 @@ def solarBodiesPictures():
 
     print("Extracting data.....\n")
     # Selecting a random image key
-    imageKey = random.choice(imageKeys)
+    imageKey = secrets.choice(imageKeys)
     imageURL = f'https://drive.google.com/uc?export=view&id={imageKey}'
 
     # Fetch the image content

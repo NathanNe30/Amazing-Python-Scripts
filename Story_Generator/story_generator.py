@@ -1,4 +1,4 @@
-import random
+import secrets
 
 # Lists of story elements
 characters = ['Alice', 'Bob', 'Charlie', 'Eve']
@@ -13,10 +13,10 @@ conclusions = ['and they lived happily ever after.',
 
 
 def generate_story():
-    character = random.choice(characters)
-    setting = random.choice(settings)
-    action = random.choice(actions)
-    conclusion = random.choice(conclusions)
+    character = secrets.choice(characters)
+    setting = secrets.choice(settings)
+    action = secrets.choice(actions)
+    conclusion = secrets.choice(conclusions)
 
     story = f"Once upon a time, {character} found themselves in {setting}. They {action} {conclusion}"
 

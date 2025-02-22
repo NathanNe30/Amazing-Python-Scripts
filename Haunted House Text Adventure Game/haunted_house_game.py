@@ -1,5 +1,5 @@
 import time
-import random
+import secrets
 
 
 def print_slow(text):
@@ -43,7 +43,7 @@ def ask_riddle():
         }
     ]
 
-    riddle = random.choice(riddles)
+    riddle = secrets.choice(riddles)
     print_slow(riddle['question'])
     attempts = 3
     while attempts > 0:
@@ -88,7 +88,7 @@ def left_door(inventory):
 def hide_and_seek():
     hiding_spots = ['under the bed', 'behind the curtains',
                     'inside the wardrobe', 'under the table']
-    hidden_spot = random.choice(hiding_spots)
+    hidden_spot = secrets.choice(hiding_spots)
 
     print_slow(
         "The creepy doll disappears, and you hear eerie giggles echoing in the room.")

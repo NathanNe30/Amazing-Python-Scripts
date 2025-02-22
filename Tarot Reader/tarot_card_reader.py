@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 # get tarot deck of 78 cards and 'predictions' from tarot.txt
@@ -33,20 +33,20 @@ def youve_chosen_yes():
     print("You have drawn three cards")
     print()
     print("Your first card is...")
-    pick_card1 = random.randint(0, 77)
+    pick_card1 = secrets.SystemRandom().randint(0, 77)
     print(tarot_deck[pick_card1])
     input(">> press enter")
     print()
     print("Your second card is...")
-    pick_card2 = random.randint(0, 78)
+    pick_card2 = secrets.SystemRandom().randint(0, 78)
     print(tarot_deck[pick_card2] if pick_card2 !=
-          pick_card1 else tarot_deck[random.randint(0, 78)])
+          pick_card1 else tarot_deck[secrets.SystemRandom().randint(0, 78)])
     input(">> press enter")
     print()
     print("And your third and final card is...")
-    pick_card3 = random.randint(0, 78)
+    pick_card3 = secrets.SystemRandom().randint(0, 78)
     print(tarot_deck[pick_card3] if pick_card3 != pick_card1 and pick_card3 !=
-          pick_card2 else tarot_deck[random.randint(0,      78)])
+          pick_card2 else tarot_deck[secrets.SystemRandom().randint(0,      78)])
     input(">> press enter")
     print()
     fin()

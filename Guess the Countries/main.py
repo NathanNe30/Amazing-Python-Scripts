@@ -1,7 +1,8 @@
 import turtle
 import pandas
 import pylint
-import random
+import secrets
+
 screen = turtle.Screen()
 
 screen.title('Name the Countries')
@@ -15,7 +16,7 @@ turtle.shape(image)
 data = pandas.read_csv("./Guess the Countries/country_names.csv")
 countries = data.country.to_list()
 color = ['red', 'green', 'brown', 'orange', 'blue']
-random_color = random.randint(0, 4)
+random_color = secrets.SystemRandom().randint(0, 4)
 guessed = []
 while True:
     if correct == 196:
@@ -54,7 +55,7 @@ while True:
                     ycor = int(float(y_list[i]))
                     country_turtle.hideturtle()
                     country_turtle.penup()
-                    random_color = random.randint(0, 4)
+                    random_color = secrets.SystemRandom().randint(0, 4)
                     country_turtle.color(color[random_color])
                     country_turtle.goto(xcor, ycor)
                     country_turtle.write(

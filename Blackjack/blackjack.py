@@ -1,6 +1,6 @@
 # IMPORT MODULES AND DEFINE VARIABLES
 
-import random
+import secrets
 
 playing = True
 
@@ -36,7 +36,7 @@ class Deck:  # creates a deck of cards
         return 'The deck has: ' + deck_comp
 
     def shuffle(self):  # shuffle all the cards in the deck
-        random.shuffle(self.deck)
+        secrets.SystemRandom().shuffle(self.deck)
 
     def deal(self):  # pick out a card from the deck
         single_card = self.deck.pop()

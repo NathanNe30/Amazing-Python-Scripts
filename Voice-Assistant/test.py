@@ -3,17 +3,17 @@ import time
 import speech_recognition as sr
 import playsound
 from gtts import gTTS
-import random
 import pyttsx3
 import datetime
 import time
 import webbrowser
 from ecapture import ecapture as ec
+import secrets
 
 
 def speak(text):
-    r1 = random.randint(1, 10000000)
-    r2 = random.randint(1, 10000000)
+    r1 = secrets.SystemRandom().randint(1, 10000000)
+    r2 = secrets.SystemRandom().randint(1, 10000000)
     randfile = str(r2) + "randomtext" + str(r1) + ".mp3"
     tts = gTTS(text=text, lang='en', slow=False)
     tts.save(randfile)

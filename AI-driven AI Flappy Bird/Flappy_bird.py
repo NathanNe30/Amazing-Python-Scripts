@@ -2,7 +2,7 @@
 import pygame
 import neat
 import os
-import random
+import secrets
 
 # Game window size
 WINDOW_WIDTH = 500
@@ -116,7 +116,7 @@ class Pipe:
         self.set_height()
 
     def set_height(self):
-        self.height = random.randrange(50, 450)
+        self.height = secrets.SystemRandom().randrange(50, 450)
         self.top = self.height - self.PIPE_TOP.get_height()
         self.bottom = self.height + self.GAP
 

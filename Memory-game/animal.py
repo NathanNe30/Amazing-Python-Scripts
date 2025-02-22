@@ -4,11 +4,11 @@ Created on Tue Sep 22 11:40:09 2020
 
 @author: Mansi
 """
-import random
 import os
 import game_config as gc
 
 from pygame import image, transform
+import secrets
 
 animals_count = dict((a, 0) for a in gc.ASSET_FILES)
 
@@ -20,7 +20,7 @@ def available_animals():
 class Animal:
     def __init__(self, index):
         self.index = index
-        self.name = random.choice(available_animals())
+        self.name = secrets.choice(available_animals())
         self.image_path = os.path.join(gc.ASSET_DIR, self.name)
         self.row = index // gc.NUM_TILES_SIDE
         self.col = index % gc.NUM_TILES_SIDE

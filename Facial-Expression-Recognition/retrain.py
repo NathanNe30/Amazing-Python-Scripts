@@ -99,7 +99,6 @@ import collections
 from datetime import datetime
 import hashlib
 import os.path
-import random
 import re
 import sys
 import tarfile
@@ -112,6 +111,7 @@ from tensorflow.python.framework import graph_util
 from tensorflow.python.framework import tensor_shape
 from tensorflow.python.platform import gfile
 from tensorflow.python.util import compat
+import secrets
 
 FLAGS = None
 
@@ -520,9 +520,9 @@ def get_random_cached_bottlenecks(sess, image_lists, how_many, category,
     if how_many >= 0:
         # Retrieve a random sample of bottlenecks.
         for unused_i in range(how_many):
-            label_index = random.randrange(class_count)
+            label_index = secrets.SystemRandom().randrange(class_count)
             label_name = list(image_lists.keys())[label_index]
-            image_index = random.randrange(MAX_NUM_IMAGES_PER_CLASS + 1)
+            image_index = secrets.SystemRandom().randrange(MAX_NUM_IMAGES_PER_CLASS + 1)
             image_name = get_image_path(image_lists, label_name, image_index,
                                         image_dir, category)
             bottleneck = get_or_create_bottleneck(
@@ -584,9 +584,9 @@ def get_random_distorted_bottlenecks(
     bottlenecks = []
     ground_truths = []
     for unused_i in range(how_many):
-        label_index = random.randrange(class_count)
+        label_index = secrets.SystemRandom().randrange(class_count)
         label_name = list(image_lists.keys())[label_index]
-        image_index = random.randrange(MAX_NUM_IMAGES_PER_CLASS + 1)
+        image_index = secrets.SystemRandom().randrange(MAX_NUM_IMAGES_PER_CLASS + 1)
         image_path = get_image_path(image_lists, label_name, image_index, image_dir,
                                     category)
         if not gfile.Exists(image_path):

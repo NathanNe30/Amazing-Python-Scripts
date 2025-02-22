@@ -8,9 +8,8 @@
 b : branching factor (choices, number of possible move)
 d : depth 
 '''
+import secrets
 
-# Format colour
-import random
 bright_cyan = "\033[0;96m"
 
 # import package
@@ -166,7 +165,7 @@ def compMove():
 
 
 def selectRandom(li):
-    return random.choice(li)
+    return secrets.choice(li)
 
 
 def isBoardFull(board):

@@ -1,6 +1,6 @@
 import pygame
-import random
 import time
+import secrets
 
 MAZE_WIDTH, MAZE_HEIGHT = 20, 20
 CELL_SIZE = 30
@@ -24,7 +24,7 @@ maze = [[Cell.WALL for _ in range(MAZE_WIDTH)] for _ in range(MAZE_HEIGHT)]
 def generate_maze(x, y):
     maze[y][x] = Cell.VISITED
     directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
-    random.shuffle(directions)
+    secrets.SystemRandom().shuffle(directions)
 
     for dx, dy in directions:
         nx, ny = x + 2 * dx, y + 2 * dy

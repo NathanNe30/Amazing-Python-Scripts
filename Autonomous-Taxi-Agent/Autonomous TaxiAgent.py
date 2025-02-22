@@ -6,10 +6,10 @@ Created on Fri Jun  4 18:02:01 2021
 """
 
 import time
-import random
 import gym
 import numpy as np
 from IPython.display import clear_output
+import secrets
 
 env = gym.make('Taxi-v3')
 
@@ -56,7 +56,7 @@ for episode in range(num_episodes):
 
     for step in range(max_steps_per_episode):
         # Exploration vs Exploitation trade-off
-        exploration_threshold = random.uniform(0, 1)
+        exploration_threshold = secrets.SystemRandom().uniform(0, 1)
         if exploration_threshold > exploration_rate:
             action = np.argmax(q_table[state, :])
         else:

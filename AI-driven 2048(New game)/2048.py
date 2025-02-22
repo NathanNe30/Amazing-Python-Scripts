@@ -1,5 +1,5 @@
-import random
 import copy
+import secrets
 
 
 class AI2048:
@@ -128,7 +128,7 @@ class AI2048:
     def get_best_move(self, depth=3):
         moves = ['left', 'right', 'up', 'down']
         best_score = float('-inf')
-        best_move = random.choice(moves)
+        best_move = secrets.choice(moves)
         for move in moves:
             new_board = copy.deepcopy(self.board)
             merged = self.move(new_board, move)

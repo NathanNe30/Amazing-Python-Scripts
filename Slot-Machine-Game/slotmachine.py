@@ -1,4 +1,5 @@
-import random
+import secrets
+
 MAX_LINES = 3
 MAX_BET = 100
 MIN_BET = 1
@@ -48,7 +49,7 @@ def get_slot_machine_spin(rows, cols, symbols):
         column = []
         current_symbols = all_symbols[:]
         for _ in range(rows):
-            value = random.choice(all_symbols)
+            value = secrets.choice(all_symbols)
             current_symbols.remove(value)
             column.append(value)
 

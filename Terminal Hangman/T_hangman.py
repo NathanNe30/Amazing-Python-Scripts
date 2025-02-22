@@ -1,4 +1,4 @@
-import random
+import secrets
 
 
 def Mywordlist():
@@ -18,7 +18,7 @@ def hangman():
     '''
 
     # Fetching Word list we would like to play with.
-    word = random.choice(Mywordlist())
+    word = secrets.choice(Mywordlist())
     turns = 10  # Total number of chance given to the user
     guessmade = ''
 

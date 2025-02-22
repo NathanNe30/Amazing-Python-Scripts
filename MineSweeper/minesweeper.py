@@ -2,7 +2,7 @@
 from tkinter import *
 from tkinter import messagebox as mb
 from tkinter import ttk
-import random
+import secrets
 
 # function to create screen for the game
 
@@ -103,7 +103,7 @@ def board():
     vallist = ['1', '2', '3', '4', '1', '2', '3', '4', '1', '2', '3', '4', '1', '2', '3', '4',
                '1', '2', '3', '4', 'b', 'b', 'b', 'b', 'b']
     value = {}
-    random.shuffle(vallist)  # shuffle for randomness
+    secrets.SystemRandom().shuffle(vallist)  # shuffle for randomness
     for i in range(25):
         value[butlist[i]] = vallist[i]  # assining values to buttons
     root.mainloop()

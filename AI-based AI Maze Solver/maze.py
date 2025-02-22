@@ -1,5 +1,5 @@
 import heapq
-import random
+import secrets
 
 
 class MazeSolver:
@@ -60,7 +60,7 @@ class MazeSolver:
 
 
 def generate_random_maze(rows, cols, obstacle_probability):
-    return [[random.random() < obstacle_probability for _ in range(cols)] for _ in range(rows)]
+    return [[secrets.SystemRandom().random() < obstacle_probability for _ in range(cols)] for _ in range(rows)]
 
 
 def print_maze(maze):

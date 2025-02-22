@@ -4,9 +4,9 @@ import copy
 import time
 import sys
 import os
-import random
 import pygame.gfxdraw
 from pygame.locals import *
+import secrets
 
 FPS = 120
 winwdth = 940
@@ -232,7 +232,7 @@ def rngame():
             if len(fbblist) < 1:
                 return score.total, 'win'
             gameclrlist = updtclrlist(bbarr)
-            random.shuffle(gameclrlist)
+            secrets.SystemRandom().shuffle(gameclrlist)
             if launchbb == False:
 
                 nxtbb = Bubble(gameclrlist[0])
@@ -279,7 +279,7 @@ def mkeblkbrd():
 def setbb(array, gameclrlist):
     for row in range(bubblelyrs):
         for col in range(len(array[row])):
-            random.shuffle(gameclrlist)
+            secrets.SystemRandom().shuffle(gameclrlist)
             newbb = Bubble(gameclrlist[0], row, col)
             array[row][col] = newbb
 

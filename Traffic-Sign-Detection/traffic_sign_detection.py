@@ -19,7 +19,8 @@ from skimage.color import rgb2gray
 import numpy as np
 import cv2 as cv
 import csv
-import random
+import secrets
+
 PATH = '/content/Dataset'
 TESTING_PATH = '/content/Dataset/Test'
 
@@ -102,7 +103,7 @@ def preview(images, labels):
     """
     plt.figure(figsize=(16, 16))
     for c in range(len(np.unique(labels))):
-        i = random.choice(np.where(labels == c)[0])
+        i = secrets.choice(np.where(labels == c)[0])
         plt.subplot(10, 10, c + 1)
         plt.axis('off')
         plt.title('class: {}'.format(c))
@@ -157,7 +158,7 @@ def augmentation(imgs, lbls):
             imgs_for_augm = []
             lbls_for_augm = []
             for j in range(add_num):
-                im_index = random.choice(np.where(lbls == i)[0])
+                im_index = secrets.choice(np.where(lbls == i)[0])
                 imgs_for_augm.append(imgs[im_index])
                 lbls_for_augm.append(lbls[im_index])
             augmented_class = augment_imgs(imgs_for_augm, 1)

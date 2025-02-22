@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import messagebox
-import random
 import time
+import secrets
 
 unsorted_data = data = []
 
@@ -61,7 +61,7 @@ def generate_array():
     data = []
 
     for i in range(size_val):
-        data.append(random.randrange(min_val, max_val + 1))
+        data.append(secrets.SystemRandom().randrange(min_val, max_val + 1))
 
     unsorted_data = data.copy()
     draw_data(data, ["red" for x in range(len(data))])

@@ -1,4 +1,4 @@
-import random
+import secrets
 
 cryptic_language = {
     'A': 'Q', 'B': 'W', 'C': 'E', 'D': 'R', 'E': 'T',
@@ -34,7 +34,7 @@ messages = [
 
 
 def generate_message():
-    return random.choice(messages)
+    return secrets.choice(messages)
 
 
 def play_game():

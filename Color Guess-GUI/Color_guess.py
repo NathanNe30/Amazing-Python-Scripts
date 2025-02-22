@@ -1,5 +1,5 @@
-import random
 import tkinter
+import secrets
 
 colors_name = ['Red', 'White', 'Yellow', 'Pink',
                'Blue', 'Black', 'Brown', 'Purple', 'Green', 'Cyan']
@@ -22,7 +22,7 @@ def change_color():
             score += 1
 
         e.delete(0, tkinter.END)
-        random.shuffle(colors_name)
+        secrets.SystemRandom().shuffle(colors_name)
         label.config(fg=str(colors_name[1]), text=str(colors_name[0]))
         scoreLabel.config(text="Score: "+str(score))
 
