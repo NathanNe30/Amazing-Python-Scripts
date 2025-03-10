@@ -6,6 +6,7 @@
 from tkinter import *
 from tkinter.filedialog import asksaveasfilename, askopenfilename
 import subprocess
+from security import safe_command
 
 compiler = Tk()
 compiler.title('Simple Python IDE')
@@ -44,8 +45,7 @@ def run():
         text.pack()
         return
     command = f'python {file_path}'
-    process = subprocess.Popen(
-        command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
+    process = safe_command.run(subprocess.Popen, command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=True)
     output, error = process.communicate()
     code_output.insert('1.0', output)
     code_output.insert('1.0',  error)
