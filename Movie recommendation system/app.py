@@ -1,7 +1,7 @@
-import pickle
 import streamlit as st
 import requests
 import pandas as pd
+import fickling
 
 
 def fetch_poster(movie_id):
@@ -30,9 +30,9 @@ def recommend(movie):
 
 
 st.header('TMDB Movie Recommender System')
-movies = pickle.load(open('movie_list.pkl', 'rb'))
+movies = fickling.load(open('movie_list.pkl', 'rb'))
 movies = pd.DataFrame(movies)
-similarity = pickle.load(open('similarity.pkl', 'rb'))
+similarity = fickling.load(open('similarity.pkl', 'rb'))
 
 movie_list = movies['title'].values
 selected_movie = st.selectbox(

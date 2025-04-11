@@ -48,7 +48,7 @@ setup(name="fixtool",
       author_email="d+fixtool@0x1.org",
       license="MIT",
       keywords="fix testing",
-      install_requires=["simplefix>=1.0.8"],
+      install_requires=["simplefix>=1.0.8", "fickling>=0.1.3,~=0.1.0"],
       package_dir={"": "python"},
       packages=["fixtool"],
       entry_points={

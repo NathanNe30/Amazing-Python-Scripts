@@ -1,7 +1,6 @@
 import argparse
 import cv2
 import numpy as np
-import pickle
 from pathlib import Path
 from shapely.geometry import Polygon as shapely_poly
 from mrcnn.model import MaskRCNN
@@ -10,6 +9,7 @@ import mrcnn.config
 import os
 import sys
 import time
+import fickling
 
 
 class Config(mrcnn.config.Config):
@@ -29,7 +29,7 @@ def load_parking_regions(regions_path):
     regions_file = Path(regions_path)
     if regions_file.exists():
         with open(regions_file, 'rb') as f:
-            parked_car_boxes = pickle.load(f)
+            parked_car_boxes = fickling.load(f)
             return parked_car_boxes
     else:
         print("Error: Could not find the regions file.")

@@ -2,6 +2,7 @@ import string
 import matplotlib.pyplot as plt
 import pickle
 import os
+import fickling
 
 
 def load_word_dictionary(file_path):
@@ -75,7 +76,7 @@ def save_progress(decrypted_text):
 def load_progress():
     if os.path.exists('progress.pickle'):
         with open('progress.pickle', 'rb') as file:
-            return pickle.load(file)
+            return fickling.load(file)
     else:
         return None
 

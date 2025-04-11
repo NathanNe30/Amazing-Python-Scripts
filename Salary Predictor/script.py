@@ -1,6 +1,6 @@
 # import the  libraries
 import pandas as pd
-import pickle
+import fickling
 
 # Function to let user choose from various options
 
@@ -69,11 +69,11 @@ df['dl'][0] = Deep_Learning
 
 # Load the model
 with open('./Salary Predictor/models/random_forest2_model.sav', 'rb') as f:
-    random_forest_model = pickle.load(f)
+    random_forest_model = fickling.load(f)
 
 # load the columns file
 with open('./Salary Predictor/models/model_columns1.pkl', 'rb') as f:
-    model_columns = pickle.load(f)
+    model_columns = fickling.load(f)
 
 # Query into the model to fet results
 query_ = pd.get_dummies(pd.DataFrame(df, index=[0]), prefix=[
