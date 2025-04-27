@@ -1,5 +1,4 @@
 import logging
-import requests
 import re
 import urllib.request
 import urllib.parse
@@ -9,6 +8,7 @@ import ssl
 import itertools
 from telegram.ext import Updater, CommandHandler, MessageHandler, Filters
 import decouple
+from security import safe_requests
 
 # Enable logging
 logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
@@ -41,7 +41,7 @@ def genre(update, context):
     url = 'https://www.imdb.com/search/title/'
     genre = str(update.message.text)[7:]
     print(genre)
-    r = requests.get(url+'?genres='+genre)
+    r = safe_requests.get(url+'?genres='+genre)
     soup = BeautifulSoup(r.text, "html.parser")
     title = soup.find('title')
     if title.string == 'IMDb: Advanced Title Search - IMDb':
@@ -85,7 +85,7 @@ def error(update, context):
 def get_info(movie):
     "To scrape IMDb and get genre and rating of the movie "
     url = 'https://www.imdb.com/find?q='
-    r = requests.get(url+movie+'&ref_=nv_sr_sm')
+    r = safe_requests.get(url+movie+'&ref_=nv_sr_sm')
     soup = BeautifulSoup(r.text, "html.parser")
     title = soup.find('title')
     tags = soup('a')
@@ -102,7 +102,7 @@ def get_info(movie):
             link = re.search('/title/(.*?)/', str(m))
             new_url = 'https://www.imdb.com'+str(link.group(0))
             if new_url != pre_url:
-                html = requests.get(new_url)
+                html = safe_requests.get(new_url)
                 soup2 = BeautifulSoup(html.text, "html.parser")
                 movietitle = soup2.find('title').string.replace('- IMDb', ' ')
                 a = soup2('a')

@@ -1,8 +1,8 @@
-import requests
+from security import safe_requests
 
 
 def download_file(url, destination):
-    response = requests.get(url, stream=True)
+    response = safe_requests.get(url, stream=True)
     if response.status_code == 200:
         with open(destination, 'wb') as file:
             for chunk in response.iter_content(chunk_size=1024):

@@ -2,6 +2,7 @@ import re
 import requests
 from urllib.parse import urlparse, unquote
 import logging
+from security import safe_requests
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +24,7 @@ class GoogleSearchAPI:
             params = self._params.copy()
             params["exactTerms"] = f"/in/{linkedin_id}"
             while True:
-                resp = requests.get(self._api_url, params=params)
+                resp = safe_requests.get(self._api_url, params=params)
                 if resp.status_code != 200:
                     logger.warning(
                         f"Google Custom Search API error: {resp.status_code} - {resp.text}")

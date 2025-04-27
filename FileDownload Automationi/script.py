@@ -1,4 +1,4 @@
-import requests
+from security import safe_requests
 
 
 def download_file(url, save_path, file_name):
@@ -11,7 +11,7 @@ def download_file(url, save_path, file_name):
     - save_path (str): The directory path where the file will be saved.
     - file_name (str): The name to be used for the downloaded file.
     """
-    response = requests.get(url)
+    response = safe_requests.get(url)
     file_path = save_path + "\\" + file_name
     with open(file_path, 'wb') as file:
         file.write(response.content)

@@ -1,6 +1,6 @@
-import requests
 from bs4 import BeautifulSoup
 import json
+from security import safe_requests
 
 
 def getAbout(channel_username):
@@ -24,7 +24,7 @@ def getAbout(channel_username):
     """
     url = f"https://www.youtube.com/@{channel_username}/about"
     try:
-        res = requests.get(url)
+        res = safe_requests.get(url)
         soup = BeautifulSoup(res.text, "html.parser")
         channel_data = {"channel_data": []}
         link_data = {"link_data": []}

@@ -3,8 +3,8 @@
 import discord
 import schedule
 import asyncio
-import requests
 import openai
+from security import safe_requests
 
 openai.api_key = 'YOUR_OPENAI_API_KEY'
 # Get a key at https://platform.openai.com/docs/api-reference
@@ -34,7 +34,7 @@ latest_url = ""
 
 def get_latest_article():
     global latest_article
-    response = requests.get(url, params=params)
+    response = safe_requests.get(url, params=params)
     articles = response.json()['articles']
     latest_article = articles[0]
     return latest_article

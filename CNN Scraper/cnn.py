@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import requests
+from security import safe_requests
 
 
 class NewsCNN:
@@ -36,7 +36,7 @@ class NewsCNN:
             obj_keys = ["news", "link"]
             location = country.lower()
             URL = f"https://edition.cnn.com/world/{location}"
-            page = requests.get(URL)
+            page = safe_requests.get(URL)
             parse = BeautifulSoup(page.content, "html.parser")
             heads = parse.find_all("span", attrs={"data-editable": "headline"})
             links1 = parse.find_all(
@@ -95,7 +95,7 @@ class NewsCNN:
             sol = []
             type = type.lower()
             url = f"https://edition.cnn.com/{type}"
-            page = requests.get(url, headers=self.headers)
+            page = safe_requests.get(url, headers=self.headers)
             parse = BeautifulSoup(page.content, "html.parser")
             articles = parse.find_all(
                 "a", {"class": "container__link container_lead-plus-headlines__link"}

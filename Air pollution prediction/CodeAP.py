@@ -1,11 +1,12 @@
-import requests
 import matplotlib.pyplot as plt
+from security import safe_requests
+
 city = input("Enter you city :  ")
 url = 'http://api.waqi.info/feed/' + city + '/?token='
 api_key = input("Enter your API key: ")
 
 main_url = url + api_key
-r = requests.get(main_url)
+r = safe_requests.get(main_url)
 data = r.json()['data']
 aqi = data['aqi']
 iaqi = data['iaqi']

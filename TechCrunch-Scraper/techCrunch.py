@@ -1,6 +1,6 @@
-import requests
 from bs4 import BeautifulSoup
 import json
+from security import safe_requests
 
 
 class TechCrunch:
@@ -37,7 +37,7 @@ class TechCrunch:
             category.replace(" ", "-").lower()
         )
         try:
-            res = requests.get(url)
+            res = safe_requests.get(url)
             soup = BeautifulSoup(res.text, "html.parser")
 
             articles_data = {"articles": []}
@@ -120,7 +120,7 @@ class TechCrunch:
         """
         url = "https://search.techcrunch.com/search?p=" + topic + "&fr=techcrunch"
         try:
-            res = requests.get(url)
+            res = safe_requests.get(url)
             soup = BeautifulSoup(res.text, "html.parser")
 
             articles_data = {"articles": []}

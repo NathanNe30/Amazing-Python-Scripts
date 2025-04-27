@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
-import requests
 import csv
+from security import safe_requests
 
 pages = int(input('How many pages do you want to scrape ? : '))
 dict0 = {
@@ -49,7 +49,7 @@ with open('internshala.csv', mode='a') as f:
     ])
     for i in range(1, pages + 1):
         print('Page', i)
-        resp = requests.get(url + "/page-" + str(i))
+        resp = safe_requests.get(url + "/page-" + str(i))
         data = BeautifulSoup(resp.content, 'lxml')
         companies = data.findAll("div", {"class": "heading_6 company_name"})
         profiles = data.findAll("div", {"class": "heading_4_5 profile"})

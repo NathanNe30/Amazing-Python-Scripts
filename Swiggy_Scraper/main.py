@@ -1,5 +1,5 @@
-import requests
 from bs4 import BeautifulSoup as bs
+from security import safe_requests
 
 
 def get_restraunt_details(restraunt_url):
@@ -29,7 +29,7 @@ def get_restraunt_details(restraunt_url):
         headers = {
             "User-Agent": "Mozilla/5.0 (Windows NT 6.3; Win 64 ; x64) Apple WeKit /537.36(KHTML , like Gecko) Chrome/80.0.3987.162 Safari/537.36"
         }
-        response = requests.get(restraunt_url, headers=headers).text
+        response = safe_requests.get(restraunt_url, headers=headers).text
         soup = bs(response, "lxml")
         restaurant_data = []
         name = soup.find(

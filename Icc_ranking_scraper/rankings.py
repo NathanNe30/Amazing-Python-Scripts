@@ -1,5 +1,5 @@
 from bs4 import BeautifulSoup
-import requests
+from security import safe_requests
 
 
 class ICC:
@@ -13,7 +13,7 @@ class ICC:
             obj_keys = ["rank", "team"]
             resposne_list = []
             url = self.url + "team-rankings/" + format
-            response = requests.get(url)
+            response = safe_requests.get(url)
             soup = BeautifulSoup(response.content, "html.parser")
             teams = soup.find_all("span", class_="u-hide-phablet")
             for rank, team in enumerate(teams, 1):
@@ -28,7 +28,7 @@ class ICC:
 
         try:
             url = self.url + f"/player-rankings/{format}/{type}"
-            response = requests.get(url)
+            response = safe_requests.get(url)
             soup = BeautifulSoup(response.content, "html.parser")
             top_player = soup.find(
                 "div", class_="rankings-block__banner--name-large"

@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests as req
+from security import safe_requests
 
 currencies = []
 
@@ -26,7 +27,7 @@ amount = input(
 currencies_table_url = 'https://www.x-rates.com/table/?from={}&amount={}'.format(
     currency['short'], amount)
 
-currencies_table_page = req.get(currencies_table_url).text
+currencies_table_page = safe_requests.get(currencies_table_url).text
 
 soup = BeautifulSoup(currencies_table_page, 'html.parser')
 

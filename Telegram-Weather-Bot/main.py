@@ -1,5 +1,5 @@
-import requests
 import telebot
+from security import safe_requests
 
 bot_token = 'YOUR_BOT_TOKEN'
 bot = telebot.TeleBot(bot_token)
@@ -12,7 +12,7 @@ def send_welcome(message):
 
 @bot.message_handler(func=lambda m: True)
 def echo_all(message):
-    response = requests.get("http://api.weatherapi.com/v1/current.json?key={}&q={}".format(
+    response = safe_requests.get("http://api.weatherapi.com/v1/current.json?key={}&q={}".format(
         "2d3f4a2bd175414aa45175205221408", message.text)).json()
     bot.send_message(
         message.chat.id, format_response_to_human_readable(response))
