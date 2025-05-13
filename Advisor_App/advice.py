@@ -8,7 +8,7 @@ from tkinter import messagebox
 
 def advice():
     try:
-        res = requests.get("https://api.adviceslip.com/advice").json()
+        res = requests.get("https://api.adviceslip.com/advice", timeout=60).json()
         advice_text.set(res["slip"]["advice"])
     except requests.exceptions.RequestException:
         messagebox.showerror(

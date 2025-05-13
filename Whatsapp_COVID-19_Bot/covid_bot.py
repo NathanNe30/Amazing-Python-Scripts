@@ -30,7 +30,7 @@ receiver_list = [decouple.config("NUM")]
 
 # Covid Report of India. See README fir Info.
 url = "https://api.apify.com/v2/key-value-stores/toDWvRj1JpTXiM8FF/records/LATEST?disableRedirect=true"
-data_json = requests.get(url).json()
+data_json = requests.get(url, timeout=60).json()
 
 # Reading the Information form JSON data.
 df = []

@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 def scrape_travel_destinations():
     # Replace with the actual URL of the travel destinations page
     url = "https://www.example.com/destinations"
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
     soup = BeautifulSoup(response.text, "html.parser")
 
     destinations = []

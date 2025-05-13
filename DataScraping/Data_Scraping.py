@@ -23,7 +23,7 @@ def get_tweets(api_key, api_secret_key, access_token, access_token_secret, usern
 
 def get_weather(api_key, city):
     url = f"http://api.openweathermap.org/data/2.5/weather?q={city}&appid={api_key}"
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
     data = response.json()
 
     if response.status_code == 200:
@@ -37,7 +37,7 @@ def get_weather(api_key, city):
 
 def get_stock_data(api_key, symbol):
     url = f"https://www.alphavantage.co/query?function=TIME_SERIES_DAILY&symbol={symbol}&apikey={api_key}"
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
     data = response.json()
 
     if "Time Series (Daily)" in data:

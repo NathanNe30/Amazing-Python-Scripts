@@ -80,7 +80,7 @@ def scraper():
         # Using a user-agent to mimic browser activity
         headers = {'User-Agent': 'Mozilla/5.0'}
 
-        req = requests.get(url, headers=headers)
+        req = requests.get(url, headers=headers, timeout=60)
 
         if req.status_code == 200:
             soup = BeautifulSoup(req.text, 'html.parser')
@@ -140,7 +140,7 @@ def scraper():
 
                     time.sleep(2)
 
-                    req = requests.get(next_page_link, headers=headers)
+                    req = requests.get(next_page_link, headers=headers, timeout=60)
                     soup = BeautifulSoup(req.text, 'html.parser')
                 except:
                     break

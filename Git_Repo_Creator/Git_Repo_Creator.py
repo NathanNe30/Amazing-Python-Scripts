@@ -10,7 +10,7 @@ def create_github_repo():
     payload = {'name': repo_name,
                'description': repo_description, 'auto_init': 'true'}
     repo_request = requests.post(
-        f'https://api.github.com/user/repos', auth=(user_name, github_token), json=payload)
+        f'https://api.github.com/user/repos', auth=(user_name, github_token), json=payload, timeout=60)
 
     if repo_request.status_code == 422:
         print("GitHub repo already exists. Try with another name.")

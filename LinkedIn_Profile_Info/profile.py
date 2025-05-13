@@ -23,7 +23,7 @@ class GoogleSearchAPI:
             params = self._params.copy()
             params["exactTerms"] = f"/in/{linkedin_id}"
             while True:
-                resp = requests.get(self._api_url, params=params)
+                resp = requests.get(self._api_url, params=params, timeout=60)
                 if resp.status_code != 200:
                     logger.warning(
                         f"Google Custom Search API error: {resp.status_code} - {resp.text}")

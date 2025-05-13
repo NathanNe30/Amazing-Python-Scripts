@@ -11,7 +11,7 @@ if mo == None:
     exit()
 
 # Requesting the HTML and making the BeautifulSoup object
-req = requests.get(mo.group())
+req = requests.get(mo.group(), timeout=60)
 soup = BeautifulSoup(req.text, "lxml")
 
 # Validating if the site has content

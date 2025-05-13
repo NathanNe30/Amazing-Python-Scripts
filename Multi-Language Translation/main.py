@@ -21,7 +21,7 @@ def multi_translate(languages: list, phrase: str):
             "target": i
         }
 
-        response = requests.post(url, data=payload, headers=headers)
+        response = requests.post(url, data=payload, headers=headers, timeout=60)
 
         res[i] = response.json()['data']['translations'][0]['translatedText']
     return res

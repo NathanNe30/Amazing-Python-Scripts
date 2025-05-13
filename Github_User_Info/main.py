@@ -4,7 +4,7 @@ import argparse
 
 def main(args):
     URL = f"https://api.github.com/users/{args.u}"
-    res = requests.get(URL).json()
+    res = requests.get(URL, timeout=60).json()
     output = ""
     output += "Username: "+res['login']
     if (res['name']):

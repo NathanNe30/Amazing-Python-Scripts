@@ -3,7 +3,7 @@ import requests
 
 def get_repository_contents(repo_owner, repo_name):
     url = f"https://api.github.com/repos/{repo_owner}/{repo_name}/contents"
-    response = requests.get(url)
+    response = requests.get(url, timeout=60)
 
     if response.status_code == 200:
         return response.json()

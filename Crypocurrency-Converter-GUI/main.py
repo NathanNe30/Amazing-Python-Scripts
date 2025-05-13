@@ -56,7 +56,7 @@ class guiVersion(QMainWindow, Ui_guiVersion):
     def api(self, cur1, cur2):
         api_link = "https://min-api.cryptocompare.com/data/pricemulti?fsyms={}&tsyms={}".format(
             cur1, cur2)
-        resp = requests.get(api_link)
+        resp = requests.get(api_link, timeout=60)
         # print(r.status_code)
         data = json.loads(resp.content)
         # print(data)

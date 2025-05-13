@@ -5,7 +5,7 @@ from PIL import Image  # only import if you want to display meme in your local d
 
 ### Main code###
 # add /n to get required number of memes (where n is a number)
-response = requests.get('https://meme-api.com/gimme')
+response = requests.get('https://meme-api.com/gimme', timeout=60)
 meme = response.json()
 meme_url = meme['url']  # if more than 1 meme accordingly change the code
 ##############

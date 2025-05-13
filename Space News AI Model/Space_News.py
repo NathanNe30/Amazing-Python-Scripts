@@ -33,7 +33,7 @@ def spaceNews():
     print('\nPlease wait.....')
     Url = "https://api.nasa.gov/planetary/apod?api_key=" + str(Api_Key)
     Params = {'date': str(Date)}
-    r = requests.get(Url, params=Params)
+    r = requests.get(Url, params=Params, timeout=60)
 
     # Parsing the fetched data for displaying
     Data = r.json()
@@ -44,7 +44,7 @@ def spaceNews():
     Image_Url = Data['url']
 
     # Requesting for the image url to fetch and store into an array
-    Image_r = requests.get(Image_Url)
+    Image_r = requests.get(Image_Url, timeout=60)
     FileName = str(Date) + '.jpg'
     # Saving the images
     with open(FileName, 'wb') as f:
@@ -69,7 +69,7 @@ def MarsImage():
     url = f"https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos?earth_date={date}&api_key={Api_Key}"
 
     # Fetching data from the internet
-    r = requests.get(url)
+    r = requests.get(url, timeout=60)
     Data = r.json()
 
     # Extracting data from the fetched data set
@@ -86,7 +86,7 @@ def MarsImage():
             img_url = photo['img_src']
 
             # Downloading images from the internet
-            p = requests.get(img_url)
+            p = requests.get(img_url, timeout=60)
             img = f'{index}.jpg'
             with open(img, 'wb') as file:
                 file.write(p.content)
@@ -110,7 +110,7 @@ def Astro():
     url = f"https://api.nasa.gov/neo/rest/v1/feed?start_date={start_date}&end_date={end_date}&api_key={Api_Key}"
 
     # Fetching data from the internet
-    r = requests.get(url)
+    r = requests.get(url, timeout=60)
     Data = r.json()
 
     # Clear the terminal for the next operation
@@ -147,7 +147,7 @@ def SolarBodies():
     url = "https://api.le-systeme-solaire.net/rest/bodies/"
 
     # Fetching data from the internet
-    r = requests.get(url)
+    r = requests.get(url, timeout=60)
     Data = r.json()  # Save the fetched data after converting into json object
 
     # Clear the terminal for the next operation
@@ -172,7 +172,7 @@ def SolarBodies():
         # Fetching data for that body
         body = Body
         url_2 = f"https://api.le-systeme-solaire.net/rest/bodies/{body}"
-        rrr = requests.get(url_2)  # Fetchin data from the internet
+        rrr = requests.get(url_2, timeout=60)  # Fetchin data from the internet
         data = rrr.json()
 
         # Listing / parsing the dataset
@@ -244,7 +244,7 @@ def solarBodiesPictures():
     imageURL = f'https://drive.google.com/uc?export=view&id={imageKey}'
 
     # Fetch the image content
-    response = requests.get(imageURL)
+    response = requests.get(imageURL, timeout=60)
     image_content = response.content
 
     # Load the image using PIL

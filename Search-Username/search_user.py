@@ -69,7 +69,7 @@ def search_web(username, target_website):
     :param username: Username to be searches across the platforms
     :param target_website: The targetted website
     """
-    r = requests.get(target_website)
+    r = requests.get(target_website, timeout=60)
     if r.status_code == 200:
         print('Got it ' + username + ' in ' + target_website)
     elif r.status_code == 400:

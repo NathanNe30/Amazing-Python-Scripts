@@ -27,7 +27,7 @@ class StackOverflow:
         """
         url = "https://stackoverflow.com/questions/tagged/" + self.topic
         try:
-            res = requests.get(url)
+            res = requests.get(url, timeout=60)
             soup = BeautifulSoup(res.text, "html.parser")
 
             questions_data = {"questions": []}

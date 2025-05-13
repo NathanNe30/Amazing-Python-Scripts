@@ -28,7 +28,7 @@ def generate_url():
 
 def scrape_results():
     url = generate_url()
-    page = requests.get(url)
+    page = requests.get(url, timeout=60)
 
     # Start scraping resultant html data
     soup = BeautifulSoup(page.content, 'html.parser')

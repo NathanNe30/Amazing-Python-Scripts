@@ -44,7 +44,7 @@ class PageSpeed(object):
             raise ValueError('invalid strategy: {0}'.format(strategy))
 
         # Returns raw data
-        raw = requests.get(self.endpoint, params=params)
+        raw = requests.get(self.endpoint, params=params, timeout=60)
 
         response = PageSpeedResponse(raw)
 

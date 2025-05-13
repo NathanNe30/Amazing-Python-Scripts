@@ -231,7 +231,7 @@ def main(current_month):
         # GET HTTP request
         query_page += 1
         response = requests.get(
-            'https://nextspaceflight.com/launches/?page=' + str(query_page))
+            'https://nextspaceflight.com/launches/?page=' + str(query_page), timeout=60)
 
         soup = BeautifulSoup(response.text, 'html.parser')
 

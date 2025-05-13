@@ -12,7 +12,7 @@ import time
 
 url = input("Enter the url of the file you want to download: ")
 
-r = requests.get(url)
+r = requests.get(url, timeout=60)
 # receives data from the url
 
 file_size = int(r.headers['Content-Length'])
@@ -22,7 +22,7 @@ chunk_size = 256
 number of bytes downloaded at a time
 """
 
-r = requests.get(url, stream=True)
+r = requests.get(url, stream=True, timeout=60)
 
 """streams=True ensures that
 will not get data at once, but will get data one by one

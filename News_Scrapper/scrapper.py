@@ -19,7 +19,7 @@ def getTopTenFromDivTag(category):
     count = 0
     category_url = URL + category
 
-    page = requests.get(category_url)
+    page = requests.get(category_url, timeout=60)
     soup = BeautifulSoup(page.text, "html.parser")
 
     all_div_tags = soup.find_all(class_="detail")
@@ -41,7 +41,7 @@ def getTopTenFromLiTag(category):
     count = 0
     category_url = URL + category
 
-    page = requests.get(category_url)
+    page = requests.get(category_url, timeout=60)
     soup = BeautifulSoup(page.text, "html.parser")
 
     ul_tag = soup.find_all(class_="itg-listing")

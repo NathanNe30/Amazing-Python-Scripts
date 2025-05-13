@@ -46,7 +46,7 @@ class SeleniumScraper:
 
             if response.status_code == 301:
                 # retry with redirect
-                response = requests.get(response.headers['Location'])
+                response = requests.get(response.headers['Location'], timeout=60)
                 response.raise_for_status()
                 if response.status_code == 200:
                     return response.text

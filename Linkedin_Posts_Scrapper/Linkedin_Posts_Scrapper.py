@@ -5,7 +5,7 @@ def get_linkedin_posts(access_token):
     url = 'https://api.linkedin.com/v2/shares?q=owners&owners=urn:li:person:YOUR_USER_ID&count=10'
     headers = {'Authorization': f'Bearer {access_token}'}
 
-    response = requests.get(url, headers=headers)
+    response = requests.get(url, headers=headers, timeout=60)
     data = response.json()
 
     if response.status_code == 200:

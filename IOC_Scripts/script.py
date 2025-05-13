@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import iocextract
 
-r = requests.get('your_link')
+r = requests.get('your_link', timeout=60)
 
 # Parsing the HTML
 soup = BeautifulSoup(r.content, 'html.parser')

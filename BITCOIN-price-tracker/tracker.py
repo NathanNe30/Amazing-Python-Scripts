@@ -8,7 +8,7 @@ import time
 def get_latest_crypto_price(coin):
     url = 'https://www.google.com/search?q=' + (coin) + 'price'
     # make a request to the website
-    HTML = requests.get(url)
+    HTML = requests.get(url, timeout=60)
     # Parsse the HTML
     soup = BeautifulSoup(HTML.text, 'html.parser')
     # find the current price
