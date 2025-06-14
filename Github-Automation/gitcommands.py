@@ -1,6 +1,7 @@
 from subprocess import call
 from sys import platform as _platform
 from colors import logcolors
+from security import safe_command
 
 
 def init():
@@ -21,7 +22,7 @@ def add(filelist):
         # perform git add on file
         print(f"{logcolors.SUCCESS}Adding{logcolors.ENDC}",
               file.split('\\')[-1])
-        call(('git add ' + file))
+        safe_command.run(call, ('git add ' + file))
 
 
 # git commit -m "passed message"
@@ -48,7 +49,7 @@ def commit(filelist, *args, **kwargs):
         # else execute git commit for the file
         # added a comment
         else:
-            call('git commit -m "' + msg + '"')
+            safe_command.run(call, 'git commit -m "' + msg + '"')
             call('cls', shell=True)
             print(
                 f'Commited {logcolors.CYAN}{file}{logcolors.ENDC} with msg: {logcolors.BOLD}{msg}{logcolors.ENDC}'
@@ -56,17 +57,17 @@ def commit(filelist, *args, **kwargs):
 
 
 def setremote(url):
-    call('git remote add origin ' + url)
+    safe_command.run(call, 'git remote add origin ' + url)
 
 
 def setBranch(branch):
-    call('git branch -M ' + branch)
+    safe_command.run(call, 'git branch -M ' + branch)
 
 
 # git push
 
 
 def push(url, branch):
-    call('git push -u ' + url + ' ' + branch)
+    safe_command.run(call, 'git push -u ' + url + ' ' + branch)
     call('cls', shell=True)
     print(f'{logcolors.SUCCESS}Successfully Pushed Changes{logcolors.ENDC}')

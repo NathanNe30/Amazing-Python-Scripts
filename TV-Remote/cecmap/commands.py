@@ -3,6 +3,7 @@ import subprocess
 
 from pynput.mouse import Button
 from pynput.keyboard import Key, KeyCode
+from security import safe_command
 
 
 SCROLL_DIR = {
@@ -134,7 +135,7 @@ def launch(*args, **kwargs):
     Will be detached from current process group to avoid it being stopped
     when we are killed.
     """
-    return subprocess.Popen(args, preexec_fn=os.setpgrp, **kwargs)
+    return safe_command.run(subprocess.Popen, args, preexec_fn=os.setpgrp, **kwargs)
 
 
 # Keep global score of started processes, so that toggles defined in different
