@@ -1,9 +1,9 @@
-import requests
 from bs4 import BeautifulSoup
+from security import safe_requests
 
 
 def scrape_links(url):
-    response = requests.get(url)
+    response = safe_requests.get(url)
     soup = BeautifulSoup(response.text, 'html.parser')
     links = soup.find_all('a')
     for link in links:

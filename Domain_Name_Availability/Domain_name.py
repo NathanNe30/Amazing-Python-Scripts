@@ -1,5 +1,5 @@
-import requests
 import decouple
+from security import safe_requests
 
 req_headers = {}
 
@@ -42,7 +42,7 @@ def available_domain_names():
     url = get_url(domain_name)
 
     print("\nSearching for the available domains")
-    res = requests.get(url, headers=req_headers)
+    res = safe_requests.get(url, headers=req_headers)
 
     if res.status_code == 200:
         # Output is in JSON file so reading it.

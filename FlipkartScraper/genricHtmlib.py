@@ -8,6 +8,8 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 import warnings
 import requests
+from security import safe_requests
+
 warnings.filterwarnings("ignore")
 
 
@@ -46,7 +48,7 @@ class SeleniumScraper:
 
             if response.status_code == 301:
                 # retry with redirect
-                response = requests.get(response.headers['Location'])
+                response = safe_requests.get(response.headers['Location'])
                 response.raise_for_status()
                 if response.status_code == 200:
                     return response.text

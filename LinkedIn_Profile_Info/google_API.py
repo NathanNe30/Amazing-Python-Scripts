@@ -2,6 +2,7 @@ import re
 import requests
 import logging
 import time
+from security import safe_requests
 
 logger = logging.getLogger(__name__)
 
@@ -23,7 +24,7 @@ class GoogleSearchAPI:
             params = self._params.copy()
             params["exactTerms"] = f"/in/{linkedin_id}"
             while True:
-                resp = requests.get(self._api_url, params=params)
+                resp = safe_requests.get(self._api_url, params=params)
                 if resp.status_code == 200:
                     data = resp.json()
                     items = data.get("items", [])

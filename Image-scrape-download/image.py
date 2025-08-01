@@ -3,10 +3,10 @@ from tkinter import *
 from tkhtmlview import HTMLLabel
 from tkinter import ttk
 from tkinter import font as tkFont
-import requests
 from bs4 import BeautifulSoup
 import urllib3
 import shutil
+from security import safe_requests
 
 # Function to save image to the users file system
 
@@ -26,7 +26,7 @@ def getImage():
     search = search_box.get()
     url = "https://www.bing.com/images/search?q={}".format(
         search.replace(' ', '?'))
-    page = requests.get(url)
+    page = safe_requests.get(url)
 
     # Start scraping resultant html data
     soup = BeautifulSoup(page.content, 'html.parser')

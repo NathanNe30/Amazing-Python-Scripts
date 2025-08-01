@@ -1,5 +1,6 @@
+from security import safe_requests
+
 def dalle(message):
-    import requests
     import openai
 
     # Set up the OpenAI API client
@@ -16,7 +17,7 @@ def dalle(message):
         size="1024x1024"
     )
     image_url = response['data'][0]['url']
-    response = requests.get(image_url)
+    response = safe_requests.get(image_url)
     with open("image.jpg", "wb") as f:
         f.write(response.content)
 

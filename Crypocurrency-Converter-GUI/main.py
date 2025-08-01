@@ -4,6 +4,7 @@ from PyQt5.QtCore import *
 from guiVersion import Ui_guiVersion
 import json
 import requests
+from security import safe_requests
 
 
 class guiVersion(QMainWindow, Ui_guiVersion):
@@ -56,7 +57,7 @@ class guiVersion(QMainWindow, Ui_guiVersion):
     def api(self, cur1, cur2):
         api_link = "https://min-api.cryptocompare.com/data/pricemulti?fsyms={}&tsyms={}".format(
             cur1, cur2)
-        resp = requests.get(api_link)
+        resp = safe_requests.get(api_link)
         # print(r.status_code)
         data = json.loads(resp.content)
         # print(data)

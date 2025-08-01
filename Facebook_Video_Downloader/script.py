@@ -2,12 +2,13 @@
 import time
 from tkinter.ttk import *
 import tkinter as tk
-from requests import get, HTTPError, ConnectionError
+from requests import HTTPError, ConnectionError
 from re import findall
 from urllib.parse import unquote
 from threading import Thread
 import queue
 from queue import Empty
+from security import safe_requests
 
 
 def Invalid_Url():
@@ -20,7 +21,7 @@ def get_downloadlink(url):
 
     url = url.replace("www", "mbasic")
     try:
-        r = get(url, timeout=5, allow_redirects=True)
+        r = safe_requests.get(url, timeout=5, allow_redirects=True)
         if r.status_code != 200:
             raise HTTPError
         a = findall("/video_redirect/", r.text)
@@ -81,7 +82,7 @@ class VideoDownload(Thread):
 
         # save the picture to a file
         block_size = 1024  # 1kB
-        r = get(self.url, stream=True)
+        r = safe_requests.get(self.url, stream=True)
         total_size = int(r.headers.get("content-length"))
 
         with open('video.mp4', 'wb') as file:

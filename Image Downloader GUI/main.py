@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 import os
-import requests
+from security import safe_requests
 
 
 def get_ext(url: str) -> str | None:
@@ -34,7 +34,7 @@ def download_img():
         return
 
     try:
-        img_content = requests.get(u).content
+        img_content = safe_requests.get(u).content
         with open(img_path, "wb") as handler:
             handler.write(img_content)
             messagebox.showinfo("Success", f"Image downloaded to:\n{img_path}")

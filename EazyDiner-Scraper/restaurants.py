@@ -1,6 +1,6 @@
 import json
-import requests
 from bs4 import BeautifulSoup
+from security import safe_requests
 
 
 class EazyDiner:
@@ -39,7 +39,7 @@ class EazyDiner:
             + self.location.replace(" ", "-").replace(",", "").lower()
         )
         try:
-            res = requests.get(url)
+            res = safe_requests.get(url)
             soup = BeautifulSoup(res.text, "html.parser")
 
             restaurant_data = {"restaurants": []}

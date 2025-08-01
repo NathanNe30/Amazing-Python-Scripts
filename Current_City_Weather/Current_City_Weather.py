@@ -1,4 +1,4 @@
-import requests
+from security import safe_requests
 
 
 def get_temperature(json_data):
@@ -30,7 +30,7 @@ def main():
     city = input("City Name : ")
     units_format = "&units=metric"
     final_url = api_address + city + units_format
-    json_data = requests.get(final_url).json()
+    json_data = safe_requests.get(final_url).json()
     weather_details = get_weather_data(json_data, city)
     # print formatted data
     print(weather_details)

@@ -5,14 +5,14 @@
         You just need to have the url and you are good to go!
 """
 import os
-import requests
 from tqdm import tqdm
 import math
 import time
+from security import safe_requests
 
 url = input("Enter the url of the file you want to download: ")
 
-r = requests.get(url)
+r = safe_requests.get(url)
 # receives data from the url
 
 file_size = int(r.headers['Content-Length'])
@@ -22,7 +22,7 @@ chunk_size = 256
 number of bytes downloaded at a time
 """
 
-r = requests.get(url, stream=True)
+r = safe_requests.get(url, stream=True)
 
 """streams=True ensures that
 will not get data at once, but will get data one by one

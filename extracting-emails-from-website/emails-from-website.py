@@ -1,8 +1,8 @@
 import re
-import requests
+from security import safe_requests
 
 url = input("Enter Url: ")
-text = requests.get(url).text
+text = safe_requests.get(url).text
 
 # Regex query which search for the particular email format.
 x = re.findall(r"[a-zA-Z]+@{1}[a-zA-Z]+[.]{1}[a-zA-Z]+", text)
