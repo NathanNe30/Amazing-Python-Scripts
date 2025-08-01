@@ -1,7 +1,7 @@
 # Importing required modules
-import requests
 from bs4 import BeautifulSoup
 import tkinter as tk
+from security import safe_requests
 
 # Creating function to get temperature
 
@@ -14,7 +14,7 @@ def get_temp():
     # Searching it on google
     url = f"https://www.google.com/search?&q={search}"
     # Sending and Receiving Requests
-    r = requests.get(url)
+    r = safe_requests.get(url)
     # Scrape the temperature from the search results
     s = BeautifulSoup(r.text, "html.parser")
     # Storing details

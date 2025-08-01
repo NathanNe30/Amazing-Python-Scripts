@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
-import requests
 import json
+from security import safe_requests
 
 
 class AskUbuntu:
@@ -34,7 +34,7 @@ class AskUbuntu:
         """
         url = "https://askubuntu.com/questions/tagged/" + self.topic
         try:
-            res = requests.get(url)
+            res = safe_requests.get(url)
             soup = BeautifulSoup(res.text, "html.parser")
 
             questions_data = {"questions": []}

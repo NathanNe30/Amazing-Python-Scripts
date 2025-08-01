@@ -1,6 +1,6 @@
-import requests
 from bs4 import BeautifulSoup
 from tabulate import tabulate
+from security import safe_requests
 
 headers = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.141 Safari/537.36"}
@@ -10,7 +10,7 @@ headers = {
 
 def amazon(item):
     URL = "https://www.amazon.in/s?k=" + item.replace(" ", "+")
-    page = requests.get(URL, headers=headers)
+    page = safe_requests.get(URL, headers=headers)
     soup = BeautifulSoup(page.content, "html.parser")
     name = "Amazon"
     # For access to product links un-comment these:
@@ -35,7 +35,7 @@ def amazon(item):
 
 def flipkart(item):
     URL = "https://www.flipkart.com/search?q=" + item
-    page = requests.get(URL, headers=headers)
+    page = safe_requests.get(URL, headers=headers)
     soup = BeautifulSoup(page.content, "html.parser")
     name = "Flipkart"
     # For access to product links un-comment these:
@@ -58,7 +58,7 @@ def flipkart(item):
 
 def snapdeal(item):
     URL = "https://www.snapdeal.com/search?keyword=" + item.replace(" ", "+")
-    page = requests.get(URL, headers=headers)
+    page = safe_requests.get(URL, headers=headers)
     soup = BeautifulSoup(page.content, "html.parser")
     name = "Snapdeal"
 

@@ -1,4 +1,3 @@
-import requests
 from bs4 import BeautifulSoup
 import tkinter as tk
 from tkinter import messagebox, simpledialog
@@ -7,6 +6,7 @@ from tkinter import font as tkFont
 import time
 import sqlite3
 from sqlite3 import Error
+from security import safe_requests
 
 # Function to connect to the SQL Database
 
@@ -72,7 +72,7 @@ def scrape_questions():
 
     url = get_URL()
     if url:
-        page = requests.get(url)
+        page = safe_requests.get(url)
     else:
         clear_progress()
         return

@@ -1,6 +1,6 @@
-import requests
 from bs4 import BeautifulSoup
 import json
+from security import safe_requests
 
 
 class Video:
@@ -41,7 +41,7 @@ class Video:
         """
         url = self.video_url
         try:
-            res = requests.get(url)
+            res = safe_requests.get(url)
             soup = BeautifulSoup(res.text, "html.parser")
             video_data = {"video_data": []}
 

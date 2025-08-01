@@ -6,7 +6,7 @@
 """
 
 import os
-import requests
+from security import safe_requests
 
 url = "https://graph.facebook.com/{}/picture?type=large"
 
@@ -31,7 +31,7 @@ fbid = int(input("Enter the Facebook-id to download it's profile picture: "))
 # the number should be a valid Facebook user id
 
 try:
-    result = requests.get(url.format(fbid))
+    result = safe_requests.get(url.format(fbid))
     with open("fb_dps/{}_img.jpg".format(fbid), "wb") as file:
         file.write(result.content)
 

@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
-import requests
 from tkinter import *
+from security import safe_requests
 
 info_dict = {}
 
@@ -31,7 +31,7 @@ def wikiScraper():
     entry = entry_str.get()
     entry = entry.split()
     query = '_'.join([i.capitalize() for i in entry])
-    req = requests.get('https://en.wikipedia.org/wiki/'+query)
+    req = safe_requests.get('https://en.wikipedia.org/wiki/'+query)
 
     # to check for valid URL
     if req.status_code == 200:

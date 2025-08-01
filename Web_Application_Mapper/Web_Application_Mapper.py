@@ -1,6 +1,7 @@
 import os
 import threading
 import requests
+from security import safe_requests
 
 threads = 10
 target = "http://www.test.com"
@@ -28,7 +29,7 @@ def test_remote():
 
         url = f"{target}{path}"
         try:
-            response = requests.get(url)
+            response = safe_requests.get(url)
             print(f"[{response.status_code}] => {path}")
         except requests.HTTPError as error:
             print(f"Failed {error}")

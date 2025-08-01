@@ -1,4 +1,4 @@
-import requests
+from security import safe_requests
 
 
 class Pixabay():
@@ -61,7 +61,7 @@ class Pixabay():
 
         BASE_URL = 'https://pixabay.com/api/videos/'
         _params = self.__get_params_video(query, num, params)
-        response = requests.get(BASE_URL, params=_params)
+        response = safe_requests.get(BASE_URL, params=_params)
 
         data = response.json()
         hits = data['hits']
@@ -69,7 +69,7 @@ class Pixabay():
             if self.verbose:
                 print(f"  Downloading Pixabay videos {i+1}/{num}")
             video_url = hit['videos']['large']['url']
-            response = requests.get(video_url)
+            response = safe_requests.get(video_url)
             if response is not None:
                 with open(f'video_pixabay_{i+1:02d}.mp4', 'wb') as f:
                     f.write(response.content)
@@ -119,7 +119,7 @@ class Pixabay():
 
         BASE_URL = 'https://pixabay.com/api/'
         _params = self.__get_params_photo(query, num, params)
-        response = requests.get(BASE_URL, params=_params)
+        response = safe_requests.get(BASE_URL, params=_params)
 
         data = response.json()
         hits = data['hits']
@@ -127,7 +127,7 @@ class Pixabay():
             if self.verbose:
                 print(f"  Downloading Pixabay photos {i+1}/{num}")
             image_url = hit['largeImageURL']
-            response = requests.get(image_url)
+            response = safe_requests.get(image_url)
             if response is not None:
                 with open(f'photo_pixabay_{i+1:02d}.jpg', 'wb') as f:
                     f.write(response.content)

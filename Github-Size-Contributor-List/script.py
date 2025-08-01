@@ -1,11 +1,11 @@
-import requests
 import argparse
+from security import safe_requests
 
 
 def main(args):
     GITHUB_URL = f" https://api.github.com/repos/{args.o}/{args.n}"
-    res = requests.get(GITHUB_URL).json()
-    response_collaborators = requests.get(f"{GITHUB_URL}/contributors").json()
+    res = safe_requests.get(GITHUB_URL).json()
+    response_collaborators = safe_requests.get(f"{GITHUB_URL}/contributors").json()
 
     response_text = f"Size of repository is {res.get('size')}"
 
